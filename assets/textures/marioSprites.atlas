@@ -1,0 +1,7 @@
+marioSprites.png
+size:4096,128
+repeat:none
+big_mario
+bounds:1156,2,987,98
+small_mario
+bounds:2,16,1152,84

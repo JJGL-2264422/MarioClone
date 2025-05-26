@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="5" nextobjectid="3">
+ <tileset firstgid="1" source="plainTiles.tsx"/>
+ <layer id="1" name="BG" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwWAGjEDMhISZ8cihy6OrIQUIArEQEhbGIjcDSV6RgaEB2R2KSHLobsSHFdHMxWYvPjwLiGcD8RwCYoQwNnvRzZmBQy8AAQ4LbQ==
+  </data>
+ </layer>
+ <objectgroup id="3" name="objects">
+  <object id="1" x="0" y="1152">
+   <polygon points="0,0 704,0 704.5,-111.5 709.776,-121.68 720,-128 1005,-128 1018.24,-122.25 1025,-108.5 1024,128 0,128"/>
+  </object>
+  <object id="2" x="1152" y="1280">
+   <polygon points="0,0 768,0 768,-256 592.333,-256 581.667,-250.333 576.333,-240 576,-192 384,-192 384,-240.333 377.333,-251 368,-255.667 16.3333,-256 6.33333,-250.667 0.333333,-239.333 0,-192"/>
+  </object>
+ </objectgroup>
+</map>
