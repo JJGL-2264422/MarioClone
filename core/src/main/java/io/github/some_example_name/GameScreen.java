@@ -15,6 +15,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import helper.TileMapHelper;
@@ -39,13 +40,13 @@ public class GameScreen extends ScreenAdapter {
         marioAtlas = new TextureAtlas("textures/marioSprites.atlas");
 
         this.camera = camera;
-        this.viewport = new ScreenViewport(camera);
+        this.viewport = new StretchViewport(800,400);
         batch = new SpriteBatch();
-        this.world = new World(new Vector2(0,-9.81f),false);
+        this.world = new World(new Vector2(0,-10.81f),false);
         this.box2DDebugRenderer = new Box2DDebugRenderer();
 
         this.Map = new TileMapHelper(this);
-        this.renderer = Map.setupMap("maps/testMap.tmx");
+        this.renderer = Map.setupMap("maps/Map2.tmx");
         camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
 
 
