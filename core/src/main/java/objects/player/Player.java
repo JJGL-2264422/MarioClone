@@ -139,7 +139,7 @@ public class Player extends Sprite {
 
     public void jump(boolean jumping){
         if(jumping && jumpCounter < 1){
-            float force = body.getMass() * 10;
+            float force = body.getMass() * 12;
             body.setLinearVelocity(body.getLinearVelocity().x,0);
             body.applyLinearImpulse(new Vector2(0,force),body.getWorldCenter(),true);
             jumpCounter ++;
