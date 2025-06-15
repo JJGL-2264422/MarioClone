@@ -3,6 +3,7 @@ package objects.player;
 import static helper.Constants.PPM;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -41,11 +42,23 @@ public class Player extends Sprite {
         this.xVel = 0; this.yVel = 0;
         this.speed = 4f;
         this.jumpCounter = 0;
+        this.body.setUserData("PLAYER");
         runningRight = false;
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
 
-        smallMarioAtlas = screen.getMarioAtlas().findRegion("small_mario");
+
+        //Cambio de color
+        Texture originalAtlas = screen.getMarioAtlas().findRegion("small_mario").getTexture();
+        Texture texturaModificada = PlayerColorChanger.cambiarColorRopaConContraste(originalAtlas, "#9cb7f7");
+
+        TextureRegion regionOriginal = screen.getMarioAtlas().findRegion("small_mario");
+        smallMarioAtlas = new TextureRegion(texturaModificada,
+            regionOriginal.getRegionX(),
+            regionOriginal.getRegionY(),
+            regionOriginal.getRegionWidth(),
+            regionOriginal.getRegionHeight()
+        );
 
         //Definir sprites para el Mario pequeño.
         smallMarioIdle = new TextureRegion(smallMarioAtlas, 0, 0, 48, 84);
@@ -54,12 +67,15 @@ public class Player extends Sprite {
         smallMarioJump = new TextureRegion(smallMarioAtlas, 528, 0, 48, 84);
         smallMarioFall = new TextureRegion(smallMarioAtlas, 576, 0, 48, 84);
 
+
+
         //Definir animaciones para el Mario pequeño.
         frames.add(new TextureRegion(smallMarioAtlas, 144, 0, 48, 84));
         frames.add(new TextureRegion(smallMarioAtlas, 0, 0, 48, 84));
         frames.add(new TextureRegion(smallMarioAtlas, 192, 0, 48, 84));
         frames.add(new TextureRegion(smallMarioAtlas, 0, 0, 48, 84));
         smallMarioRun = new Animation(0.1f,frames); frames.clear();
+
 
         setRegion(smallMarioIdle);
         setBounds(x,y, 48, 84);
@@ -75,7 +91,7 @@ public class Player extends Sprite {
         setRegion(setAnimation(delta));
     }
 
-   public TextureRegion setAnimation(float delta){
+    public TextureRegion setAnimation(float delta){
         currentState = getState();
 
         TextureRegion region;
@@ -96,21 +112,21 @@ public class Player extends Sprite {
                 break;
         }
 
-       if((body.getLinearVelocity().x < 0 || !runningRight) && region.isFlipX()){
-           region.flip(true, false);
-           runningRight = false;
-       }
+        if((body.getLinearVelocity().x < 0 || !runningRight) && region.isFlipX()){
+            region.flip(true, false);
+            runningRight = false;
+        }
 
-       else if((body.getLinearVelocity().x > 0 || runningRight) && !region.isFlipX()){
-           region.flip(true, false);
-           runningRight = true;
-       }
+        else if((body.getLinearVelocity().x > 0 || runningRight) && !region.isFlipX()){
+            region.flip(true, false);
+            runningRight = true;
+        }
 
-       //Usado para las animaciones. Si prevState == currentState, continuar al siguiente frame de la animación.
-       stateTimer = currentState == prevState ? stateTimer + delta : 0;
-       prevState = currentState;
+        //Usado para las animaciones. Si prevState == currentState, continuar al siguiente frame de la animación.
+        stateTimer = currentState == prevState ? stateTimer + delta : 0;
+        prevState = currentState;
 
-       return region;
+        return region;
     }
 
     public State getState(){
@@ -137,8 +153,8 @@ public class Player extends Sprite {
         body.setLinearVelocity(xVel * speed, body.getLinearVelocity().y < 25 ? body.getLinearVelocity().y : 25);
     }
 
-    public void jump(boolean jumping){
-        if(jumping && jumpCounter < 1){
+    public void jump(){
+        if(currentState != State.JUMPING && jumpCounter < 1){
             float force = body.getMass() * 12;
             body.setLinearVelocity(body.getLinearVelocity().x,0);
             body.applyLinearImpulse(new Vector2(0,force),body.getWorldCenter(),true);
@@ -150,7 +166,7 @@ public class Player extends Sprite {
     }
 
     public void draw(Batch batch){
-       super.draw(batch);
+        super.draw(batch);
     }
     public Body getBody(){
         return body;

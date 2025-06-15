@@ -12,6 +12,10 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.ContactImpulse;
+import com.badlogic.gdx.physics.box2d.ContactListener;
+import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -20,37 +24,80 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import helper.TileMapHelper;
 import objects.controller.Controller;
+import objects.hud.HUD;
 import objects.player.Player;
 
 /** First screen of the application. Displayed after the application is created. */
 public class GameScreen extends ScreenAdapter {
     private final OrthographicCamera camera; //Camara encargada de seguir al jugador
-    public static SpriteBatch batch;
+    public static SpriteBatch batch, hud_batch;
     private final World world;
     private final Viewport viewport;
     private final Box2DDebugRenderer box2DDebugRenderer;
     private final OrthogonalTiledMapRenderer renderer;
     private final TileMapHelper Map;
     private TextureAtlas marioAtlas, enemyAtlas;
+    private HUD hud;
     public Controller controller;
 
     //Objetos
     private Player player;
-    public GameScreen(OrthographicCamera camera){
+    private int mapa;
+    private boolean secreto;
+
+    public GameScreen(OrthographicCamera camera, int mapa, boolean secreto){
+
         marioAtlas = new TextureAtlas("textures/marioSprites.atlas");
 
+        this.mapa = mapa;
+        this.secreto = secreto;
         this.camera = camera;
         this.viewport = new StretchViewport(800,400);
-        batch = new SpriteBatch();
+        hud_batch = batch = new SpriteBatch();
+        hud = new HUD(hud_batch);
         this.world = new World(new Vector2(0,-10.81f),false);
+        this.world.setContactListener(new ContactListener() {
+            @Override
+            public void beginContact(Contact contact) {
+                Object a = contact.getFixtureA().getBody().getUserData();
+                Object b = contact.getFixtureB().getBody().getUserData();
+
+
+                Gdx.app.log("DEBUG","Object a: " + a + " - Object b: " + b);
+
+                if ((a != null && a.equals("PLAYER") && b != null && b.equals("RESTART")) ||
+                    (b != null && b.equals("PLAYER") && a != null && a.equals("RESTART"))) {
+                    reiniciarMapa(GameScreen.this.mapa, GameScreen.this.secreto);
+                }
+                if ((a != null && a.equals("PLAYER") && b != null && b.equals("SIGUIENTE")) ||
+                    (b != null && b.equals("PLAYER") && a != null && a.equals("SIGUIENTE"))) {
+                    GameScreen.this.mapa = mapa + 1;
+                    GameScreen.this.secreto = false;
+                    reiniciarMapa(GameScreen.this.mapa, GameScreen.this.secreto);
+                }
+                if ((a != null && a.equals("PLAYER") && b != null && b.equals("SECRETO")) ||
+                    (b != null && b.equals("PLAYER") && a != null && a.equals("SECRETO"))) {
+                    GameScreen.this.secreto = true;
+                    reiniciarMapa(GameScreen.this.mapa, GameScreen.this.secreto);
+                }
+            }
+
+            @Override public void endContact(Contact contact) {}
+            @Override public void preSolve(Contact contact, Manifold oldManifold) {}
+            @Override public void postSolve(Contact contact, ContactImpulse impulse) {}
+        });
+
         this.box2DDebugRenderer = new Box2DDebugRenderer();
-
         this.Map = new TileMapHelper(this);
-        this.renderer = Map.setupMap("maps/Map2.tmx");
+
+        if (secreto) {
+            this.renderer = Map.setupMap("maps/MapS.tmx");
+        }else{
+            this.renderer = Map.setupMap("maps/Map"+mapa+".tmx");
+        }
+
+
         camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
-
-
-
         controller = new Controller();
     }
 
@@ -90,7 +137,9 @@ public class GameScreen extends ScreenAdapter {
         player.draw(batch);
         batch.end();
 
-        box2DDebugRenderer.render(world,camera.combined.scl(PPM));
+        //Renderiza las hitbox
+        //box2DDebugRenderer.render(world,camera.combined.scl(PPM));
+        hud.stage.draw();
         controller.draw();
     }
 
@@ -114,7 +163,7 @@ public class GameScreen extends ScreenAdapter {
         else
             player.movement("NONE");
         if (controller.isUpPress())
-            player.jump(true);
+            player.jump();
     }
 
     @Override
@@ -138,6 +187,12 @@ public class GameScreen extends ScreenAdapter {
     @Override
     public void hide() {
         // This method is called when another screen replaces this one.
+    }
+
+    private void reiniciarMapa(int mapa, boolean secreto) {
+        Gdx.app.postRunnable(() -> {
+            ((Main) Gdx.app.getApplicationListener()).setScreen(new GameScreen(camera,mapa,secreto));
+        });
     }
 
     @Override

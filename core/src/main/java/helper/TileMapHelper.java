@@ -4,17 +4,22 @@ import static helper.Constants.PPM;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.CircleMapObject;
+import com.badlogic.gdx.maps.objects.EllipseMapObject;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Ellipse;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
+
 
 import io.github.some_example_name.GameScreen;
 import objects.player.Player;
@@ -36,17 +41,19 @@ public class TileMapHelper {
     }
 
     //Lee los objetos del TileMap
-    public void parseMapObjects(MapObjects mapObjects){
-        for(MapObject mapObject : mapObjects){
-            if(mapObject instanceof PolygonMapObject){
+    public void parseMapObjects(MapObjects mapObjects) {
+        for (MapObject mapObject : mapObjects) {
+
+            if (mapObject instanceof PolygonMapObject) {
                 createStaticBody((PolygonMapObject) mapObject);
             }
+
             //Busca el rectangulo encargado de spawnear al jugador y lo crea en la pantalla.
-            if(mapObject instanceof RectangleMapObject){
+            if (mapObject instanceof RectangleMapObject) {
                 Rectangle rectangle = ((RectangleMapObject) mapObject).getRectangle();
                 String rectName = mapObject.getName();
 
-                if(rectName.equals("player")){
+                if (rectName.equals("player")) {
                     Body body = BodyHelperServ.createBody(
                         rectangle.getX() + rectangle.getWidth() / 2,
                         rectangle.getY() + rectangle.getHeight() / 2,
@@ -55,11 +62,35 @@ public class TileMapHelper {
                         false,
                         gameScreen.getWorld()
                     );
-                    gameScreen.setPlayer(new Player(rectangle.getWidth(),rectangle.getHeight(),body,gameScreen));
+                    gameScreen.setPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), body, gameScreen));
                 }
             }
-        }
 
+            if (mapObject instanceof EllipseMapObject) {
+                EllipseMapObject ellipseObject = (EllipseMapObject) mapObject;
+                Ellipse ellipse = ellipseObject.getEllipse();
+                String name = mapObject.getName();
+
+                float centerX = (ellipse.x + ellipse.width / 2) / PPM;
+                float centerY = (ellipse.y + ellipse.height / 2) / PPM;
+                float avgRadius = (ellipse.width + ellipse.height) / 4 / PPM;
+
+                BodyDef bodyDef = new BodyDef();
+                bodyDef.type = BodyDef.BodyType.StaticBody;
+                bodyDef.position.set(centerX, centerY);
+
+                Body body = gameScreen.getWorld().createBody(bodyDef);
+
+                CircleShape shape = new CircleShape();
+                shape.setRadius(avgRadius);
+
+                body.createFixture(shape, 1f).setSensor(true);
+                shape.dispose();
+
+                body.setUserData(name.toUpperCase());
+
+            }
+        }
     }
 
     //Ubica los objetos del TileMap en la pantalla.

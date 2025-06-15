@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.physics.box2d.Body;
 
+//SIN USAR
 public abstract class GameEntity extends Sprite {
 
     //Propiedades del jugador.

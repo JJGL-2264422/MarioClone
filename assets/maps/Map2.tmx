@@ -1,75 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="43" height="14" tilewidth="64" tileheight="64" infinite="0" nextlayerid="5" nextobjectid="22">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="14" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#35abfd" nextlayerid="6" nextobjectid="169">
  <tileset firstgid="1" source="caveTiles.tsx"/>
  <tileset firstgid="257" source="plainTiles.tsx"/>
- <layer id="4" name="BG" width="43" height="14" tintcolor="#5a717f" parallaxx="1.12">
+ <layer id="5" name="FP" width="60" height="14" tintcolor="#d3d3d3">
   <data encoding="base64" compression="zlib">
-   eJztlF0KgCAQhIeO4JPH8WheyneP1kgEIq75WxAufJS7uM0smgKgXkID/iB8mjQ3SqlnXKvV6QDLV7hrbeLcaJR6hlrJT5rP7Z+ls7an5GfF7GaE5GfF7Hb8J3g2DO8gWvhKJ+9c+EeYFkr9iO/R8TSfHp2S1ts3sS16e+dVC33alPh7OlOXWKlzs44TTFZ4Lg==
+   eJzl1sEJwDAIhWG7QWZwpZD9VymFHIJQc3rv2ebwD/Chgn6ZOaixqRm/k6wob1Wrwqu0svdZbWV4+0ztRHt9OquZ0d7Yn71vZqUbaY03XMGNdK5VMbO8mfnL3uzXUFvV82Vbn25zzGkE
   </data>
  </layer>
- <layer id="1" name="LAYER" width="43" height="14">
+ <layer id="4" name="BG" width="60" height="14" tintcolor="#cbcbcb">
   <data encoding="base64" compression="zlib">
-   eJztlU0KwjAQhccI2q0tqDfRhYvsdOEhPEqP5lXqRpfVjd0IvkICk8HU1DSC4INvkZ++eQklQ+QqNyyJjoqBsc7Z+hDM4Mtr31GjARSoNuMCzIUPxhrzOiazPP9I1DjD+9Ija4bvp2AifDDWmNeZyaxE3Xe058+MZ90jT2p9mqUeOEdKPQx/xetX7/Eb/2sFTpEeKf7VFR6gtXLnruDm2Z/6rnz3tEHGLdiZrHjLSTHGbK9ca8EbW6KnlF17LKHy3dNeZEWPdPpSYfbhnAe5xnpXafN09bgQ+c75Culvs1YdWUMJUYx/wXxSZH0CMKU+QA==
+   eJzNlkFOwzAQRSdZtBWUBakEWVCpahfsuUAjTsCBWPgcwIJLZJ+j9U/cwCTyJOnEoVh6kjuxVb98xzJRuL0kRCm4AbdgDe4SZbCxZdNwFvh/F/BYgpX3c/B0r+hngiewBUdQRPK+hi9n+AAe234u6/hK7tM6f3clX9UlJ6r27IRI0C9knWuM4tTry2wiZDzFVTrknqqk3wzQp1Bd8/0M1N9F/xDh25YZCFpuW4wBu65n103+7qsP5TgG67fdZKDtTfZ69vkEs7K0GL6St6T+tr+tzqH8mnFTXaf4fgDe81+BZzjbncU5Rn5DLXa+1vMsVn5D7b/4XtJKv98ry7y5fA8jz69L1176fc/731nmzeUrzy/Nu2/toffws2bUmdzfLUiOG5w3s6/05rtc6tdYc14Dn81FLurNM/keuq6Sxjv1c/rn/ZGvuEcUI2m5aK4a2rwTqIWf8w==
+  </data>
+ </layer>
+ <layer id="1" name="LAYER" width="60" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzVlTFOwzAUhp9TKiSgQwJIHegCUnuDrnCUnqTNMVBZuET3XgUWWCpoFxj5Q5zKcfxeGmwj+KVvsSLFX/5nhyhuUpDVyX+DIdE6Add4p0nsGL6x3e4KhiXrFdZd+9kSPT6ByL5RPU23VYnTtcgOrs//0FfqUEqi6vRVWN8x9uXYrzjj1dmT6Or6SjT7BAv45SDTXAb2ZZxZ35/21pYXuH6AzHCVfIvLwCdjo5vqrtR3jFdvUo7Kd9Ro81WqOfO9CDMQKhtNkQtq/Av3nveMb6qa3+T8j/m+MeuSL9evy/dG93wCTsEZGAT+Bu8HPreheqdmQvnaXIFRoDnHOc8TzcTzLPv6LsGD4O2a89uk5FDXqXFXp4wv12cX37lHv/act2HPQdXp1Po3jej7Tq36ph447tB5rHnmmDPr5hzYnUrgOeoy4y7fLzQflHg=
   </data>
  </layer>
  <objectgroup id="2" name="objects">
-  <object id="1" name="player" x="578.667" y="702.67" width="61.3333" height="65.3333"/>
-  <object id="2" x="256" y="768">
-   <polygon points="0,0 0,128 704,128 704,0"/>
+  <object id="1" name="player" x="132.407" y="159.851" width="61.3333" height="65.3333"/>
+  <object id="100" x="0" y="128">
+   <polygon points="0,0 128,0 128,128 0,128"/>
   </object>
-  <object id="3" x="960" y="640">
-   <polygon points="0,0 0,256 320,256 320,0"/>
+  <object id="102" x="0" y="256">
+   <polygon points="0,0 320,0 320,640 0,640"/>
   </object>
-  <object id="4" x="320" y="640">
+  <object id="103" x="512" y="448">
+   <polygon points="0,0 0,448 384,448 384,0"/>
+  </object>
+  <object id="104" x="896" y="576">
+   <polygon points="0,0 64,0 320,64 320,320 0,320"/>
+  </object>
+  <object id="106" x="1281" y="768">
+   <polygon points="0,0 639.167,0 639.167,128 0,128"/>
+  </object>
+  <object id="108" x="1536" y="0">
+   <polygon points="0,0 0,256 896,256 896,0"/>
+  </object>
+  <object id="109" x="1536" y="256">
+   <polygon points="0,0 192,192 768,192 896,64 896,0"/>
+  </object>
+  <object id="110" x="2432" y="0">
+   <polygon points="0,0 0,320 512,320 512,0 0,0"/>
+  </object>
+  <object id="111" x="2944" y="320">
+   <polygon points="0,0 128,-128 128,-320 0,-320 0,0"/>
+  </object>
+  <object id="112" x="3072" y="192">
+   <polygon points="0,0 64,0 128,-64 128,-192 0,-192"/>
+  </object>
+  <object id="113" x="3200" y="128">
+   <polygon points="0,0 128,0 128,-128 0,-128"/>
+  </object>
+  <object id="114" x="3328" y="0">
+   <polygon points="0,0 0,128 64,192 192,64 192,0"/>
+  </object>
+  <object id="115" x="3520" y="0">
+   <polygon points="0,0 0,64 320,64 320,0"/>
+  </object>
+  <object id="116" x="3712" y="256">
    <polygon points="0,0 0,128 128,128 128,0"/>
   </object>
-  <object id="5" x="768" y="576">
-   <polygon points="0,0 0,192 128,192 128,0"/>
+  <object id="117" x="3520" y="384">
+   <polygon points="0,0 320,0 320,512 0,512"/>
   </object>
-  <object id="6" x="1088" y="384">
-   <polygon points="0,128 0,256 128,256 128,128"/>
+  <object id="118" x="3456" y="448">
+   <polygon points="0,0 -128,0 -128,64 0,64"/>
   </object>
-  <object id="7" x="1408" y="704">
-   <polygon points="0,0 -64,0 -64,128 0,128"/>
+  <object id="119" x="3264" y="576">
+   <polygon points="0,0 -192,0 -192,64 0,64"/>
   </object>
-  <object id="8" x="1408" y="640">
-   <polygon points="0,0 0,256 448,256 448,64 320,0"/>
+  <object id="120" x="3008" y="704">
+   <polygon points="0,0 -128,0 -128,64 0,64"/>
   </object>
-  <object id="9" x="1792" y="704">
-   <polygon points="64,0 192,0 192,192 64,192"/>
+  <object id="121" x="2048" y="896">
+   <polygon points="0,0 128,-128 128,0"/>
   </object>
-  <object id="10" x="1984" y="640">
-   <polygon points="0,0 0,256 448,256 448,0"/>
+  <object id="122" x="2176" y="768">
+   <polygon points="0,0 64,0 64,128 0,128"/>
   </object>
-  <object id="11" x="704" y="640">
-   <polygon points="0,0 0,128 64,128 64,0"/>
+  <object id="123" x="2240" y="768">
+   <polygon points="0,0 128,-128 128,128 0,128"/>
   </object>
-  <object id="12" x="2176" y="512">
-   <polygon points="0,0 0,64 128,64 128,0"/>
+  <object id="124" x="2368" y="640">
+   <polygon points="0,0 128,0 128,256 0,256"/>
   </object>
-  <object id="13" x="2048" y="384">
-   <polygon points="0,0 0,64 64,64 64,0"/>
+  <object id="125" x="2496" y="640">
+   <polygon points="0,0 64,64 64,256 0,256"/>
   </object>
-  <object id="14" x="2240" y="256">
-   <polygon points="0,0 0,64 128,64 128,0"/>
+  <object id="126" x="2560" y="768">
+   <polygon points="0,0 256,0 256,128 0,128"/>
   </object>
-  <object id="15" x="2240" y="0">
-   <polygon points="0,0 0,128 128,128 128,0"/>
+  <object id="130" name="restart" x="640" y="384" width="64" height="64">
+   <ellipse/>
   </object>
-  <object id="16" x="2048" y="0">
-   <polygon points="0,0 0,128 -256,128 -256,0"/>
+  <object id="131" name="restart" x="1536" y="704" width="64" height="64">
+   <ellipse/>
   </object>
-  <object id="17" x="1792" y="128">
-   <polygon points="0,0 -128,64 -896,64 -896,-128 0,-128"/>
+  <object id="132" name="restart" x="1600" y="704" width="64" height="64">
+   <ellipse/>
   </object>
-  <object id="18" x="896" y="192">
-   <polygon points="0,0 0,-192 -256,-192 -256,-128"/>
+  <object id="133" name="restart" x="320" y="832" width="64" height="64">
+   <ellipse/>
   </object>
-  <object id="20" x="448" y="64">
-   <polyline points="0,0 0,-64 -192,-64 -192,64 -192,96.75 0,0"/>
+  <object id="134" name="restart" x="384" y="832" width="64" height="64">
+   <ellipse/>
   </object>
-  <object id="21" x="640" y="64">
-   <polygon points="0,0 -192,0 -192,-64 0,-64"/>
+  <object id="135" name="restart" x="448" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="136" name="restart" x="1920" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="137" name="restart" x="1984" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="138" name="restart" x="2432" y="576" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="139" name="restart" x="2880" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="140" name="restart" x="2944" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="141" name="restart" x="3008" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="142" name="restart" x="3072" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="143" name="restart" x="3136" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="144" name="restart" x="3200" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="145" name="restart" x="3264" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="146" name="restart" x="3328" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="147" name="restart" x="3392" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="148" name="restart" x="3456" y="832" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="149" name="restart" x="3136" y="512" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="151" name="siguiente" x="3704.67" y="263.333" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="152" name="siguiente" x="3705.33" y="322" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="155" name="siguiente" x="3705.33" y="293.333" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="156" x="1216" y="640">
+   <polygon points="0,0 64,0 64,256 0,256"/>
+  </object>
+  <object id="167" x="2816" y="832">
+   <polygon points="0,0 64,64 0,64"/>
   </object>
  </objectgroup>
 </map>
