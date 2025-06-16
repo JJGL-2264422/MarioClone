@@ -3,6 +3,7 @@ package objects.player;
 import static helper.Constants.PPM;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -27,6 +28,7 @@ public class Player extends Sprite {
     protected State currentState, prevState;
     private float stateTimer;
     private boolean runningRight;
+    private Sound jump_sfx;
 
     private TextureRegion smallMarioAtlas, smallMarioIdle, smallMarioJump, smallMarioFall, smallMarioDuck;
     private Animation smallMarioRun, smallMarioSpin;
@@ -44,6 +46,7 @@ public class Player extends Sprite {
         this.jumpCounter = 0;
         this.body.setUserData("PLAYER");
         runningRight = false;
+        jump_sfx = Gdx.audio.newSound(Gdx.files.internal("sounds/jump.wav"));
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
 
@@ -158,6 +161,7 @@ public class Player extends Sprite {
             float force = body.getMass() * 12;
             body.setLinearVelocity(body.getLinearVelocity().x,0);
             body.applyLinearImpulse(new Vector2(0,force),body.getWorldCenter(),true);
+            jump_sfx.play();
             jumpCounter ++;
         }
         if(body.getLinearVelocity().y == 0){

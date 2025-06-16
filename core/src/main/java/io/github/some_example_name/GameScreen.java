@@ -4,6 +4,7 @@ import static helper.Constants.PPM;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -42,19 +43,28 @@ public class GameScreen extends ScreenAdapter {
 
     //Objetos
     private Player player;
-    private int mapa;
+    private int nivel, mapa;
     private boolean secreto;
+    private Sound enter_sfx, hurt_sfx, finish_sfx, secret_sfx, gameOver_sfx;
 
-    public GameScreen(OrthographicCamera camera, int mapa, boolean secreto){
+    public GameScreen(OrthographicCamera camera, int nivel,int mapa, boolean secreto, int lives, int timer){
 
         marioAtlas = new TextureAtlas("textures/marioSprites.atlas");
 
-        this.mapa = mapa;
+        this.mapa = mapa; this.nivel = nivel;
         this.secreto = secreto;
         this.camera = camera;
         this.viewport = new StretchViewport(800,400);
         hud_batch = batch = new SpriteBatch();
-        hud = new HUD(hud_batch);
+        hud = new HUD(hud_batch); hud.setLives(lives); hud.setTimer(timer);
+
+        //Sonidos
+        hurt_sfx = Gdx.audio.newSound(Gdx.files.internal("sounds/hurt.wav"));
+        enter_sfx = Gdx.audio.newSound(Gdx.files.internal("sounds/enter.wav"));
+        finish_sfx = Gdx.audio.newSound(Gdx.files.internal("sounds/finish.wav"));
+        secret_sfx = Gdx.audio.newSound(Gdx.files.internal("sounds/secret.wav"));
+        gameOver_sfx = Gdx.audio.newSound(Gdx.files.internal("sounds/gameOver.wav"));
+
         this.world = new World(new Vector2(0,-10.81f),false);
         this.world.setContactListener(new ContactListener() {
             @Override
@@ -67,18 +77,42 @@ public class GameScreen extends ScreenAdapter {
 
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("RESTART")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("RESTART"))) {
-                    reiniciarMapa(GameScreen.this.mapa, GameScreen.this.secreto);
+                    if(lives <= 1) {
+                        reiniciarMapa(0, 0, GameScreen.this.secreto, 5, 300);
+                        gameOver_sfx.play();
+                    }
+                    else{
+                        reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, GameScreen.this.secreto,lives-1,timer);
+                        hurt_sfx.play();
+                    }
                 }
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("SIGUIENTE")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("SIGUIENTE"))) {
                     GameScreen.this.mapa = mapa + 1;
                     GameScreen.this.secreto = false;
-                    reiniciarMapa(GameScreen.this.mapa, GameScreen.this.secreto);
+                    reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, GameScreen.this.secreto,hud.getLives(),hud.getTimer());
+                    enter_sfx.play();
                 }
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("SECRETO")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("SECRETO"))) {
                     GameScreen.this.secreto = true;
-                    reiniciarMapa(GameScreen.this.mapa, GameScreen.this.secreto);
+                    reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, GameScreen.this.secreto,hud.getLives(),hud.getTimer());
+                    secret_sfx.play();
+                }
+                if ((a != null && a.equals("PLAYER") && b != null && b.equals("FINAL")) ||
+                    (b != null && b.equals("PLAYER") && a != null && a.equals("FINAL"))) {
+                    reiniciarMapa(0, 0, GameScreen.this.secreto,hud.getLives(),300);
+                    finish_sfx.play();
+                }
+                if ((a != null && a.equals("PLAYER") && b != null && b.equals("MUNDOUNO")) ||
+                    (b != null && b.equals("PLAYER") && a != null && a.equals("MUNDOUNO"))) {
+                    reiniciarMapa(1, 1, GameScreen.this.secreto,hud.getLives(),hud.getTimer());
+                    enter_sfx.play();
+                }
+                if ((a != null && a.equals("PLAYER") && b != null && b.equals("MUNDODOS")) ||
+                    (b != null && b.equals("PLAYER") && a != null && a.equals("MUNDODOS"))) {
+                    reiniciarMapa(2, 1, GameScreen.this.secreto,hud.getLives(),hud.getTimer());
+                    enter_sfx.play();
                 }
             }
 
@@ -91,9 +125,9 @@ public class GameScreen extends ScreenAdapter {
         this.Map = new TileMapHelper(this);
 
         if (secreto) {
-            this.renderer = Map.setupMap("maps/MapS.tmx");
+            this.renderer = Map.setupMap("maps/Map"+nivel+".S.tmx");
         }else{
-            this.renderer = Map.setupMap("maps/Map"+mapa+".tmx");
+            this.renderer = Map.setupMap("maps/Map"+nivel+"."+mapa+".tmx");
         }
 
 
@@ -117,6 +151,9 @@ public class GameScreen extends ScreenAdapter {
         renderer.setView(camera);
 
         player.update(delta);
+
+        if(this.nivel != 0)
+            hud.update(delta);
 
         inputPlayer();
     }
@@ -189,9 +226,9 @@ public class GameScreen extends ScreenAdapter {
         // This method is called when another screen replaces this one.
     }
 
-    private void reiniciarMapa(int mapa, boolean secreto) {
+    private void reiniciarMapa(int nivel,int mapa, boolean secreto, int lives, int timer) {
         Gdx.app.postRunnable(() -> {
-            ((Main) Gdx.app.getApplicationListener()).setScreen(new GameScreen(camera,mapa,secreto));
+            ((Main) Gdx.app.getApplicationListener()).setScreen(new GameScreen(camera,nivel,mapa,secreto, lives, timer));
         });
     }
 

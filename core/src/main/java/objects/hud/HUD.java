@@ -60,4 +60,35 @@ public class HUD {
 
         stage.addActor(hud);
     }
+
+    public void update(float delta){
+        counter += delta;
+        if(counter >= 1){
+            timer --;
+            timerLabel.setText(String.format("%03d",timer));
+            counter = 0;
+        }
+    }
+
+    public void addLife(int value){
+        lives += value;
+        livesLabel.setText("x " + String.format("%02d",lives));
+    }
+
+    public void setTimer(Integer timer) {
+        this.timer = timer;
+        timerLabel.setText(String.format("%03d",timer));
+    }
+
+    public void setLives(Integer lives){
+        this.lives = lives;
+        livesLabel.setText("x " + String.format("%02d",lives));
+    }
+
+    public Integer getTimer(){
+        return timer;
+    }
+    public Integer getLives() {
+        return lives;
+    }
 }
