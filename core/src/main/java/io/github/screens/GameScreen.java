@@ -1,4 +1,4 @@
-package io.github.some_example_name;
+package io.github.screens;
 
 import static helper.Constants.PPM;
 
@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -18,8 +19,6 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -30,29 +29,35 @@ import objects.player.Player;
 
 /** First screen of the application. Displayed after the application is created. */
 public class GameScreen extends ScreenAdapter {
+
+    //Mapas
     private final OrthographicCamera camera; //Camara encargada de seguir al jugador
     public static SpriteBatch batch, hud_batch;
     private final World world;
     private final Viewport viewport;
     private final Box2DDebugRenderer box2DDebugRenderer;
+    private int nivel, mapa; private int mapLeft, mapRight, mapBottom, mapTop;
+    private float camHalfWidth, camHalfHeight;
+    private boolean secreto, end;
     private final OrthogonalTiledMapRenderer renderer;
     private final TileMapHelper Map;
-    private TextureAtlas marioAtlas, enemyAtlas;
-    private HUD hud;
-    public Controller controller;
+    private MapProperties mapProp;
 
     //Objetos
     private Player player;
-    private int nivel, mapa;
-    private boolean secreto;
     private Sound enter_sfx, hurt_sfx, finish_sfx, secret_sfx, gameOver_sfx;
+    private TextureAtlas marioAtlas, enemyAtlas, hatsAtlas;
+    private HUD hud;
+    public Controller controller;
 
-    public GameScreen(OrthographicCamera camera, int nivel,int mapa, boolean secreto, int lives, int timer){
+    public GameScreen(OrthographicCamera camera, int nivel,int mapa, boolean secreto, boolean end, int lives, int timer){
 
         marioAtlas = new TextureAtlas("textures/marioSprites.atlas");
+        hatsAtlas = new TextureAtlas("textures/hats.atlas");
 
         this.mapa = mapa; this.nivel = nivel;
         this.secreto = secreto;
+        this.end = end;
         this.camera = camera;
         this.viewport = new StretchViewport(800,400);
         hud_batch = batch = new SpriteBatch();
@@ -72,46 +77,48 @@ public class GameScreen extends ScreenAdapter {
                 Object a = contact.getFixtureA().getBody().getUserData();
                 Object b = contact.getFixtureB().getBody().getUserData();
 
-
-                Gdx.app.log("DEBUG","Object a: " + a + " - Object b: " + b);
-
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("RESTART")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("RESTART"))) {
                     if(lives <= 1) {
-                        reiniciarMapa(0, 0, GameScreen.this.secreto, 5, 300);
+                        reiniciarMapa(GameScreen.this.nivel, 1, false, true,5, 300);
                         gameOver_sfx.play();
                     }
                     else{
-                        reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, GameScreen.this.secreto,lives-1,timer);
-                        hurt_sfx.play();
+                        if(!end) {
+                            reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, false, false, lives - 1, timer);
+                            hurt_sfx.play();
+                        }else{
+                            reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, false, false, lives, timer);
+                            finish_sfx.play();
+                        }
                     }
                 }
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("SIGUIENTE")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("SIGUIENTE"))) {
                     GameScreen.this.mapa = mapa + 1;
                     GameScreen.this.secreto = false;
-                    reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, GameScreen.this.secreto,hud.getLives(),hud.getTimer());
+                    reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, GameScreen.this.secreto,false,hud.getLives(),hud.getTimer());
                     enter_sfx.play();
                 }
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("SECRETO")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("SECRETO"))) {
                     GameScreen.this.secreto = true;
-                    reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, GameScreen.this.secreto,hud.getLives(),hud.getTimer());
+                    reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, GameScreen.this.secreto,false,hud.getLives(),hud.getTimer());
                     secret_sfx.play();
                 }
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("FINAL")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("FINAL"))) {
-                    reiniciarMapa(0, 0, GameScreen.this.secreto,hud.getLives(),300);
+                    reiniciarMapa(0, 0, GameScreen.this.secreto,false,hud.getLives(),300);
                     finish_sfx.play();
                 }
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("MUNDOUNO")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("MUNDOUNO"))) {
-                    reiniciarMapa(1, 1, GameScreen.this.secreto,hud.getLives(),hud.getTimer());
+                    reiniciarMapa(1, 1, GameScreen.this.secreto,false,hud.getLives(),hud.getTimer());
                     enter_sfx.play();
                 }
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("MUNDODOS")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("MUNDODOS"))) {
-                    reiniciarMapa(2, 1, GameScreen.this.secreto,hud.getLives(),hud.getTimer());
+                    reiniciarMapa(2, 1, GameScreen.this.secreto,false,hud.getLives(),hud.getTimer());
                     enter_sfx.play();
                 }
             }
@@ -126,11 +133,25 @@ public class GameScreen extends ScreenAdapter {
 
         if (secreto) {
             this.renderer = Map.setupMap("maps/Map"+nivel+".S.tmx");
-        }else{
+        }else if(end){
+            this.renderer = Map.setupMap("maps/Map0.1.tmx");
+        }
+        else{
             this.renderer = Map.setupMap("maps/Map"+nivel+"."+mapa+".tmx");
         }
 
 
+        //Variables de Cámara y mundo
+        mapProp = renderer.getMap().getProperties();
+        //Limites del mundo
+        mapLeft = 0;
+        mapRight = (mapProp.get("width", Integer.class) * mapProp.get("tilewidth", Integer.class));
+        mapBottom = 0;
+        mapTop = (mapProp.get("height", Integer.class) * mapProp.get("tileheight", Integer.class));
+
+        //Posición X Y media de la cámara (Usado para evitar que muestre fuera del mapa)
+        camHalfWidth = camera.viewportWidth * .5f;
+        camHalfHeight = camera.viewportHeight * .5f;
         camera.position.set(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2, 0);
         controller = new Controller();
     }
@@ -140,6 +161,25 @@ public class GameScreen extends ScreenAdapter {
         position.x = Math.round(player.getBody().getPosition().x * PPM * 10) / 10f;
         position.y = Math.round(player.getBody().getPosition().y * PPM * 10) / 10f;
         camera.position.set(position);
+
+        //Evita que la cámara se salga de los bordes horizontales del mapa.
+        if(mapRight < camera.viewportWidth){ //Si el mapa es más pequeño que el viewport, centra la cámara horizontalmente.
+            camera.position.x = mapRight / 2;
+        }else if( (camera.position.x-camHalfWidth) <= mapLeft){ //Borde izquierdo
+            camera.position.x = mapLeft + camHalfWidth;
+        }else if((camera.position.x+camHalfWidth) >= mapRight){ //Borde derecho
+            camera.position.x = mapRight - camHalfWidth;
+        }
+
+        // Ditto. Bordes verticales
+        if(mapTop < camera.viewportHeight){ //Si el mapa es más pequeño que el viewport, centra la cámara verticalmente.
+            camera.position.y = mapTop / 2;
+        } else if ((camera.position.y - camHalfHeight) <= mapBottom) { //Borde inferior
+            camera.position.y = mapBottom + camHalfHeight;
+        }else if ((camera.position.y + camHalfHeight) >= mapTop){ //Borde superior
+            camera.position.y = mapTop - camHalfHeight;
+        }
+
         camera.update();
     }
 
@@ -155,7 +195,7 @@ public class GameScreen extends ScreenAdapter {
         if(this.nivel != 0)
             hud.update(delta);
 
-        inputPlayer();
+        inputPlayer(delta);
     }
 
     @Override
@@ -188,19 +228,23 @@ public class GameScreen extends ScreenAdapter {
         return marioAtlas;
     }
 
+    public TextureAtlas getHatsAtlas(){
+        return hatsAtlas;
+    }
+
     public void setPlayer(Player player){
         this.player = player;
     }
 
-    public void inputPlayer(){
+    public void inputPlayer(float delta){
         if(controller.isRightPress())
             player.movement("r");
         else if (controller.isLeftPress())
             player.movement("l");
         else
             player.movement("NONE");
-        if (controller.isUpPress())
-            player.jump();
+
+        player.updateJump(delta, controller.isUpPress());
     }
 
     @Override
@@ -226,9 +270,9 @@ public class GameScreen extends ScreenAdapter {
         // This method is called when another screen replaces this one.
     }
 
-    private void reiniciarMapa(int nivel,int mapa, boolean secreto, int lives, int timer) {
+    private void reiniciarMapa(int nivel,int mapa, boolean secreto, boolean end, int lives, int timer) {
         Gdx.app.postRunnable(() -> {
-            ((Main) Gdx.app.getApplicationListener()).setScreen(new GameScreen(camera,nivel,mapa,secreto, lives, timer));
+            ((Main) Gdx.app.getApplicationListener()).setScreen(new GameScreen(camera,nivel,mapa,secreto,end,lives, timer));
         });
     }
 

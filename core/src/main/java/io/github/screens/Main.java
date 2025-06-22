@@ -1,4 +1,4 @@
-package io.github.some_example_name;
+package io.github.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -21,6 +21,6 @@ public class Main extends Game {
         this.orthographicCamera = new OrthographicCamera();
         this.orthographicCamera.setToOrtho(false,widthScreen,heightScreen);
 
-        setScreen(new GameScreen(orthographicCamera,0,0,false,5,300));
+        setScreen(new GameScreen(orthographicCamera,0,0,false,false,1,300));
     }
 }

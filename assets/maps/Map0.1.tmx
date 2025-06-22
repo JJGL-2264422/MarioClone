@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="29" height="14" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#35abfd" nextlayerid="6" nextobjectid="319">
+ <tileset firstgid="1" source="caveTiles.tsx"/>
+ <tileset firstgid="257" source="plainTiles.tsx"/>
+ <tileset firstgid="593" source="castleTiles.tsx"/>
+ <layer id="5" name="FP" width="29" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzzY2RgEMCB/ZAwsng3MwPDRCCeC8RGDKRjbGai24euhlI7zYBmMDBgtwMXJsfOo8wQDLPTDM1MUzrZiW4vvewk1l5qxCc6Dh0AOwn5l1Z24rOXWnYiA2xio2AU4AIAqJlIhQ==
+  </data>
+ </layer>
+ <layer id="4" name="BG" width="29" height="14" tintcolor="#c8c8c8">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgZwIKR/nZ6MNLfXiFG+tsLspPe9sLspKe9yHbSy150O+lhLzY7YfbS206hUTuHpJ0AYM0HMg==
+  </data>
+ </layer>
+ <layer id="1" name="LAYER" width="29" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF1ARXmRgYrjHR1863QPve0dlOVmYGBjZm+tpJD7AG6Ke1JPjrJVDtKwrD4QhQ/1ESzGBkYWBgYqHMzjtA++7isJOJkQzMgMCJTKRjIUYyMAMCVzKRjkftpJ2dALANLRU=
+  </data>
+ </layer>
+ <objectgroup id="2" name="objects">
+  <object id="1" name="player" x="896" y="0" width="61.3333" height="65.3333"/>
+  <object id="294" x="0" y="576">
+   <polygon points="0,0 1856,0 1856,320 0,320"/>
+  </object>
+  <object id="296" x="320" y="448">
+   <polygon points="0,0 0,128 128,128 128,0"/>
+  </object>
+  <object id="297" x="1856" y="0">
+   <polygon points="0,0 0,896 64,896 64,0"/>
+  </object>
+  <object id="298" x="0" y="0">
+   <polygon points="0,0 -64,0 -64,896 0,896"/>
+  </object>
+  <object id="299" x="-64" y="0">
+   <polygon points="0,0 0,-64 1984,-64 1984,0"/>
+  </object>
+  <object id="301" name="final" x="324" y="437.333" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="302" name="final" x="382.667" y="437.333" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="304" name="final" x="354.667" y="434.667" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="308" name="restart" x="1408" y="384" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="309" name="restart" x="1408" y="448" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="310" name="restart" x="1408" y="512" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="311" name="restart" x="1472" y="512" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="312" name="restart" x="1472" y="448" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="313" name="restart" x="1472" y="384" width="64" height="64">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>

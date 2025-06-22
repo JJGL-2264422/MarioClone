@@ -11,12 +11,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import io.github.some_example_name.GameScreen;
+import io.github.screens.GameScreen;
 
 public class Controller {
     Viewport viewport;
     Stage stage;
-    boolean upPress, downPress, leftPress, rightPress;
+    boolean upPress, downPress, leftPress, rightPress, enterPress;
     OrthographicCamera camera;
     public Controller(){
         camera = new OrthographicCamera();
@@ -28,7 +28,22 @@ public class Controller {
         directionLnR.setPosition(150, 60);
 
         Table directionUnD = new Table();
-        directionUnD.setPosition(Gdx.graphics.getWidth()-100, 90);
+        directionUnD.setPosition(Gdx.graphics.getWidth()-130, 90);
+
+        Image enterImg = new Image(new Texture("textures/ArrowU.png"));
+        enterImg.setSize(64,64);
+        enterImg.addListener(new InputListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                enterPress = true;
+                return true;
+            }
+
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                enterPress = false;
+            }
+        });
 
         Image upImg = new Image(new Texture("textures/ArrowU.png"));
         upImg.setSize(64,64);
@@ -99,6 +114,8 @@ public class Controller {
         directionLnR.add().size(0,20);
 
         directionUnD.add(upImg).size(upImg.getWidth(),upImg.getHeight());
+        //directionUnD.add().size(64,64);
+        //directionUnD.add(enterImg).size(enterImg.getWidth(),upImg.getHeight());
         directionUnD.row().pad(5,5,5,5);
         directionUnD.add().size(64,32);
         directionUnD.row().padBottom(5);
@@ -130,5 +147,13 @@ public class Controller {
 
     public boolean isRightPress() {
         return rightPress;
+    }
+
+    public boolean isEnterPress() {
+        return enterPress;
+    }
+
+    public void setEnterPress(boolean enterPress) {
+        this.enterPress = enterPress;
     }
 }
