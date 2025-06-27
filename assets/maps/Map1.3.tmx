@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="14" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#35abfd" nextlayerid="6" nextobjectid="227">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="14" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#35abfd" nextlayerid="6" nextobjectid="242">
+ <properties>
+  <property name="ID" value="1.3"/>
+ </properties>
  <tileset firstgid="1" source="caveTiles.tsx"/>
  <tileset firstgid="257" source="plainTiles.tsx"/>
  <tileset firstgid="593" source="castleTiles.tsx"/>
@@ -16,7 +19,7 @@
  </layer>
  <layer id="1" name="LAYER" width="60" height="14">
   <data encoding="base64" compression="zlib">
-   eJzdlj8OgjAUhx+FTRMjxD+zg0fQ1dPoLdSLmHgCnXR20kNodNRdE3Uw8VUglGcLATSt/pIv5ZUA/aBAXQBwAcYKkvZJaQKsFtiChkxsv90ygB2L+sU6wQkkKB1ZgC5XntD3jAO5CL5i3UJws8eEMXO62CdxN+p50oS+JWzLdtRPa1nagju/J6r7Yoorz4Q4zbCep3jqzpKMr+JEpIX6rrHeaPalPmKyuIWpOT481HeP9UGj7yNAVWdJH1+mQQ4+nbvt8+0MceyjHBQJn5t1bBvw+pZFWHFsq7DeW/L6XgGmRyTLtfDbPWYB+N+K/6OtdzyDfG/oeiK+SfORu3bS1iUG+8bmoQBVtvx+6vpzvop1I3jk/FWQrq/kx/+PbzqGv79PMEmODA==
+   eJzNljFOwzAUhp/tbiBVTVRg7tAjtCungVtALxKJE8AEMxM9RKsywg4S7RCJ5zohzsOOZcfg/NIn9zlq6y+xHWcAkAGsLHRdM3IB8PyILSRIIVS74QBb3vTrdYcTGLA68opUrjK17wcO5FPz1esZgh8vuTZmyRL7DO6Dep40te8Jtqei6ae1KXPNXd4T230ZiqtMQZzusX5weKbOExnfeNTgCvV9wXqd2Jf66PFxqzMdKWSo7w7r14S+ZYWt9skVLqbrAGLnIBR/nRsc+20AfSLn5hm253DcyxpYG8F66/2knuuhvl8Ad2+Iz3/i3r3iFfjear+j2W/yHr62tRzqu0fXd+LbNR+l68J1Lonoa0uob2sealBlpvqpa1Rfn/051NdyboSc/P4EjOcr8/cdviUhJP/k6yby+o3t+w3jB5Jf
   </data>
  </layer>
  <objectgroup id="2" name="objects">
@@ -105,64 +108,64 @@
   <object id="196" name="restart" x="576" y="832" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="197" name="restart" x="1664" y="832" width="64" height="64">
+  <object id="197" name="restart" x="1664" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="198" name="restart" x="1728" y="832" width="64" height="64">
+  <object id="198" name="restart" x="1728" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="199" name="restart" x="1792" y="832" width="64" height="64">
+  <object id="199" name="restart" x="1792" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="200" name="restart" x="1856" y="832" width="64" height="64">
+  <object id="200" name="restart" x="1856" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="201" name="restart" x="1920" y="832" width="64" height="64">
+  <object id="201" name="restart" x="1920" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="203" name="restart" x="1984" y="832" width="64" height="64">
+  <object id="203" name="restart" x="1984" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="204" name="restart" x="2048" y="832" width="64" height="64">
+  <object id="204" name="restart" x="2048" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="205" name="restart" x="2112" y="832" width="64" height="64">
+  <object id="205" name="restart" x="2112" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="206" name="restart" x="2176" y="832" width="64" height="64">
+  <object id="206" name="restart" x="2176" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="207" name="restart" x="2240" y="832" width="64" height="64">
+  <object id="207" name="restart" x="2240" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="208" name="restart" x="2304" y="832" width="64" height="64">
+  <object id="208" name="restart" x="2304" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="209" name="restart" x="2368" y="832" width="64" height="64">
+  <object id="209" name="restart" x="2368" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="210" name="restart" x="2432" y="832" width="64" height="64">
+  <object id="210" name="restart" x="2432" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="211" name="restart" x="2496" y="832" width="64" height="64">
+  <object id="211" name="restart" x="2496" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="212" name="restart" x="2560" y="832" width="64" height="64">
+  <object id="212" name="restart" x="2560" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="213" name="restart" x="2624" y="832" width="64" height="64">
+  <object id="213" name="restart" x="2624" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="214" name="restart" x="2688" y="832" width="64" height="64">
+  <object id="214" name="restart" x="2688" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="215" name="restart" x="2752" y="832" width="64" height="64">
+  <object id="215" name="restart" x="2752" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="216" name="restart" x="2880" y="832" width="64" height="64">
+  <object id="216" name="restart" x="2880" y="896" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="217" name="restart" x="2816" y="832" width="64" height="64">
+  <object id="217" name="restart" x="2816" y="896" width="64" height="64">
    <ellipse/>
   </object>
   <object id="220" name="final" x="3584" y="256" width="64" height="64">
@@ -182,6 +185,45 @@
   </object>
   <object id="226" x="3840" y="0">
    <polygon points="0,0 0,384 64,384 64,0"/>
+  </object>
+  <object id="228" x="1856" y="768">
+   <polygon points="0,0 0,64 256,64 256,0"/>
+  </object>
+  <object id="229" x="2240" y="704">
+   <polygon points="0,0 0,64 192,64 192,0"/>
+  </object>
+  <object id="230" x="2560" y="576">
+   <polygon points="0,0 0,64 64,64 64,0"/>
+  </object>
+  <object id="231" x="2816" y="512">
+   <polygon points="0,0 0,64 64,64 64,0"/>
+  </object>
+  <object id="233" name="bigcoin" x="2304" y="576" width="64" height="100">
+   <ellipse/>
+  </object>
+  <object id="234" name="coin" x="576" y="512" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="235" name="coin" x="512" y="512" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="236" name="coin" x="638" y="570" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="237" name="coin" x="1480" y="392" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="238" name="coin" x="1544" y="392" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="239" name="coin" x="3272" y="264" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="240" name="coin" x="3336" y="264" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="241" name="coin" x="3400" y="264" width="48" height="48">
+   <ellipse/>
   </object>
  </objectgroup>
 </map>

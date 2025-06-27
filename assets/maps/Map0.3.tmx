@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="103" height="14" tilewidth="64" tileheight="64" infinite="0" nextlayerid="7" nextobjectid="141">
+ <properties>
+  <property name="ID" value="0.3"/>
+ </properties>
+ <tileset firstgid="1" source="tutoTiles.tsx"/>
+ <tileset firstgid="136" source="lvlsTiles.tsx"/>
+ <layer id="5" name="FP" width="103" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzt0SESABAUQMEvOIXiPJyMU9MlibBh+5t5JUUUAAC+0XLUsb3u4NT3l+kNAABcWzmmn4U=
+  </data>
+ </layer>
+ <layer id="4" name="BG" width="103" height="14" tintcolor="#d3d3d3">
+  <data encoding="base64" compression="zlib">
+   eJzt09lOwkAUgOFpQRCiIryRyKIJCr6RC3tLWPSNQMCSIMuV8DL8l6RAJEBoC+dPvjs6dM50lJIkSZIkSfJ+eU2pAooooYwKqjBgak6/4XGqo4EmWvjEl8Nrt5l9B9/oooc+fmBhcCZnM8QvRhhjgqnDa+u6Uj74cYEAgrhECGH9QC/o8q75Bm8QwS2iiB3ou9x17TtmH8c9EkgihTQe8Ljj2djv8LEzYKK25e8zzOoJz8gih5ctz2bdfxnMzdT3W/uV59/wjg/kUUARJZQ3nM1/e7ff4eUsXGmrezilLPY0cOm+7Hd4U27eg5f7Y6YzzGW2kuT5FhwAO/g=
+  </data>
+ </layer>
+ <layer id="6" name="FG1" width="103" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztlsdOw0AQhicF0UFc6HCjw40OB0t0uNHhgigS8Ba8AoILIMqj5BngQLvQeQ0+s7YIVrKxsQkg/EufNt6djGd2ZqKI+NNxXOQETuEs7u479zExnmOSeIJHeIAX9nyGEqjuiKcpLolGWImJpIIz08bANuHV/yr+12AdNjLkzv0I9yTcl3Bvv17ZiteskdlLvM/gfcaT6ivD7KXXLPXTV/r/J/XX4g0VKlSoUP9bndAF3T8diEa5kAf51nORyE4hFCikUO15UjGUQKlL+wM4tDjKYNsDvdDnMSanhmAYRnz6caPdnA9sJefsxFY5VECl9VxDTaqhSiHVas+TaqEO6l3aX8G1xU0G21EYg3GPMTk1DTMw69PPV2XmfBP9yDsZWw3QCE2wFxFppSYt0KwQPpt7rrWPjzbWduiw9uweSTcTbmtzju851nlYSHE+l6N/tnWBn1XWNVh3nM2m+Y65b6NTWVStzjkx1Q8DMCifc7501CjdPH0HFRH1zqqI/lxn81fQ/SZPwCRMOWrz3pNpZugTUWV368bWA87e8BODJ1/ZyDPJl27uF2EJllPUJmgCuaNfEldQuehqswlbsJ1UG1fzEhJI3TL9l7Glm5s3S9qIfw==
+  </data>
+ </layer>
+ <objectgroup id="2" name="objects">
+  <object id="1" name="player" x="176" y="536" width="61.3333" height="65.3333"/>
+  <object id="103" x="6592" y="0">
+   <polygon points="0,0 64,0 64,448 0,448"/>
+  </object>
+  <object id="104" x="6592" y="320">
+   <polygon points="0,0 -128,0 -128,128 0,128"/>
+  </object>
+  <object id="105" x="6144" y="448">
+   <polygon points="0,0 448,0 448,448 0,448"/>
+  </object>
+  <object id="106" x="5824" y="448">
+   <polygon points="0,0 0,64 192,64 192,0"/>
+  </object>
+  <object id="107" x="5632" y="576">
+   <polygon points="0,0 128,0 128,64 0,64"/>
+  </object>
+  <object id="108" x="5568" y="896">
+   <polygon points="0,0 0,-256 -5568,-256 -5568,0"/>
+  </object>
+  <object id="109" x="2240" y="640">
+   <polygon points="0,0 0,-192 256,-192 256,0"/>
+  </object>
+  <object id="110" x="1920" y="640">
+   <polygon points="0,0 0,-64 -192,-64 -192,0"/>
+  </object>
+  <object id="111" x="0" y="896">
+   <polygon points="0,0 -64,0 -64,-896 0,-896"/>
+  </object>
+  <object id="112" name="restart" x="3392" y="576" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="113" name="restart" x="3648" y="576" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="114" name="restart" x="4480" y="576" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="115" name="restart" x="4864" y="576" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="116" name="restart" x="4928" y="576" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="117" name="restart" x="4992" y="576" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="118" name="restart" x="5568" y="896" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="119" name="restart" x="5632" y="896" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="120" name="restart" x="5696" y="896" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="121" name="restart" x="5760" y="896" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="122" name="restart" x="5824" y="896" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="123" name="restart" x="5888" y="896" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="124" name="restart" x="5952" y="896" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="125" name="restart" x="6016" y="896" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="127" name="restart" x="6080" y="896" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="129" name="final" x="6454.67" y="329.333" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="130" name="final" x="6453.33" y="377.333" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="131" name="final" x="6454.67" y="354.667" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="135" name="coin" x="968" y="520" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="136" name="coin" x="1032" y="520" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="137" name="coin" x="1096" y="520" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="138" name="coin" x="1800" y="456" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="139" name="bigcoin" x="2624" y="256" width="64" height="100">
+   <ellipse/>
+  </object>
+  <object id="140" name="bigcoin" x="2048" y="256" width="64" height="100">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    tools:context="io.github.screens.android.Login"
+    android:background="#87CEEB">
+
+    <ImageView
+        android:id="@+id/coin"
+        android:layout_width="404dp"
+        android:layout_height="144dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/moneda" />
+
+
+    <ImageView
+        android:id="@+id/nube"
+        android:layout_width="437dp"
+        android:layout_height="182dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="-2dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/nube" />
+
+    <View
+        android:id="@+id/Vacio"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:background="#000000" />
+
+    <ImageView
+        android:id="@+id/parteizquiera"
+        android:layout_width="513dp"
+        android:layout_height="390dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-109dp"
+        android:layout_marginBottom="-110dp"
+        android:src="@drawable/inicio" />
+
+    <ImageView
+        android:id="@+id/partederecha"
+        android:layout_width="409dp"
+        android:layout_height="443dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-97dp"
+        android:layout_marginBottom="-96dp"
+        android:src="@drawable/fin" />
+
+    <EditText
+        android:id="@+id/player_nick"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:hint="Escribe tu nickname"
+        android:background="@drawable/texto"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/play_button"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/player_nick"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/boton"
+        android:onClick="login"
+        android:text="Entrar"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>

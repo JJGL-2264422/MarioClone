@@ -1,6 +1,7 @@
 package objects.hud;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -26,8 +27,9 @@ public class HUD {
 
     @SuppressWarnings("DefaultLocale")
     public HUD(SpriteBatch sb){
+        Preferences prefs = Gdx.app.getPreferences("playerData");
         timer = 300; counter = 0;
-        name = "Fabio"; // Placeholders. Tomar los datos desde un SharedPreferences a futuro.
+        name =  prefs.getString("playerNickname","Fabio"); // Placeholders. Tomar los datos desde un SharedPreferences a futuro.
         lives = 5;
         score = 0;
         coins = 0;
@@ -90,5 +92,28 @@ public class HUD {
     }
     public Integer getLives() {
         return lives;
+    }
+
+    public Integer getCoins() {
+        return coins;
+    }
+
+    public void setCoins(Integer newCoin) {
+        coins = newCoin;
+        coinLabel.setText("x " + String.format("%02d",coins));
+    }
+
+    public void addCoins(Integer coinValue) {
+        coins += coinValue;
+        coinLabel.setText("x " + String.format("%02d",coins));
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer addScore) {
+        score += addScore;
+        scoreLabel.setText(String.format("%06d",score));
     }
 }

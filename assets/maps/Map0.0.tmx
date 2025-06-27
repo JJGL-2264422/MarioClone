@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="80" height="25" tilewidth="64" tileheight="64" infinite="0" nextlayerid="8" nextobjectid="58">
+ <properties>
+  <property name="ID" value="0.0"/>
+ </properties>
  <tileset firstgid="1" source="lvlsTiles.tsx"/>
  <layer id="5" name="BGC" width="80" height="25">
   <data encoding="base64" compression="zlib">

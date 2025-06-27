@@ -18,15 +18,18 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
-
+import com.badlogic.gdx.utils.Array;
 
 import io.github.screens.GameScreen;
+import objects.collectables.BigCoin;
+import objects.collectables.Coin;
 import objects.player.Player;
 
 public class TileMapHelper {
 
     private TiledMap tileMap;
     private GameScreen gameScreen;
+    private Array<Coin> coins; private Array<BigCoin> bigCoins;
 
     public TileMapHelper(GameScreen gameScreen){
         this.gameScreen = gameScreen;
@@ -41,6 +44,8 @@ public class TileMapHelper {
 
     //Lee los objetos del TileMap
     public void parseMapObjects(MapObjects mapObjects) {
+        coins = new Array<Coin>();
+        bigCoins = new Array<BigCoin>();
         for (MapObject mapObject : mapObjects) {
 
             if (mapObject instanceof PolygonMapObject) {
@@ -57,12 +62,13 @@ public class TileMapHelper {
                         rectangle.getX() + rectangle.getWidth() / 2,
                         rectangle.getY() + rectangle.getHeight() / 2,
                         42,
-                        64,
+                        63,
                         false,
                         gameScreen.getWorld()
                     );
                     gameScreen.setPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), body, gameScreen));
                 }
+
             }
 
             if (mapObject instanceof EllipseMapObject) {
@@ -84,6 +90,10 @@ public class TileMapHelper {
                 shape.setRadius(avgRadius);
 
                 body.createFixture(shape, 1f).setSensor(true);
+                if(name.equals("coin"))
+                    coins.add(new Coin(body,gameScreen));
+                if(name.equals("bigcoin"))
+                    bigCoins.add(new BigCoin(body,gameScreen));
                 shape.dispose();
 
                 body.setUserData(name.toUpperCase());
@@ -115,5 +125,12 @@ public class TileMapHelper {
         PolygonShape shape = new PolygonShape();
         shape.set(worldVertices);
         return shape;
+    }
+
+    public Array<Coin> getCoins(){
+        return coins;
+    }
+    public Array<BigCoin> getBigCoins(){
+        return bigCoins;
     }
 }

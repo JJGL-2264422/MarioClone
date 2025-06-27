@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="14" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#35abfd" nextlayerid="6" nextobjectid="296">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="14" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#35abfd" nextlayerid="6" nextobjectid="304">
+ <properties>
+  <property name="ID" value="2.1"/>
+ </properties>
  <tileset firstgid="1" source="caveTiles.tsx"/>
  <tileset firstgid="257" source="plainTiles.tsx"/>
  <tileset firstgid="593" source="castleTiles.tsx"/>
@@ -157,6 +160,30 @@
   </object>
   <object id="295" x="3840" y="0">
    <polygon points="0,0 -3904,0 -3904,-64 0,-64"/>
+  </object>
+  <object id="296" name="coin" x="390.667" y="454.667" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="297" name="coin" x="454.667" y="454.667" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="298" name="coin" x="518.667" y="454.667" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="299" name="coin" x="1064" y="333.333" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="300" name="coin" x="1128" y="333.333" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="301" name="coin" x="2177.33" y="457.333" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="302" name="coin" x="2241.33" y="457.333" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="303" name="coin" x="2305.33" y="457.333" width="48" height="48">
+   <ellipse/>
   </object>
  </objectgroup>
 </map>

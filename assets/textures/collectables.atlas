@@ -1,0 +1,7 @@
+collectables.png
+size:1024,128
+repeat:none
+bigCoin
+bounds:2,2,384,100
+coin
+bounds:388,38,256,64

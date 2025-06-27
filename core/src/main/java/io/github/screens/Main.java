@@ -10,6 +10,7 @@ public class Main extends Game {
     public int widthScreen, heightScreen;
     private OrthographicCamera orthographicCamera;
 
+
     public Main(){
         INSTANCE = this;
     }
@@ -21,6 +22,6 @@ public class Main extends Game {
         this.orthographicCamera = new OrthographicCamera();
         this.orthographicCamera.setToOrtho(false,widthScreen,heightScreen);
 
-        setScreen(new GameScreen(orthographicCamera,0,0,false,false,1,300));
+        setScreen(new GameScreen(orthographicCamera,0,3,false,false,5,300,0,0));
     }
 }

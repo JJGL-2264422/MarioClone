@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="14" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#35abfd" nextlayerid="6" nextobjectid="174">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="14" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#35abfd" nextlayerid="6" nextobjectid="188">
+ <properties>
+  <property name="ID" value="1.2"/>
+ </properties>
  <tileset firstgid="1" source="caveTiles.tsx"/>
  <tileset firstgid="257" source="plainTiles.tsx"/>
  <layer id="5" name="FP" width="60" height="14" tintcolor="#d3d3d3">
   <data encoding="base64" compression="zlib">
-   eJzl1sEJwDAIhWG7QWZwpZD9VymFHIJQc3rv2ebwD/Chgn6ZOaixqRm/k6wob1Wrwqu0svdZbWV4+0ztRHt9OquZ0d7Yn71vZqUbaY03XMGNdK5VMbO8mfnL3uzXUFvV82Vbn25zzGkE
+   eJzl1sEJACAIhWHboBlcKdp/lQg6RZQXfaaHf4CPVOJCxEr1R5Xsy2TV8nq1IrxIq/U8o60W3rZCO7W9vJzezNpeSVG8UnMU777DUb2n25zNezP/7L39NdBW9PtaW2cDwdZraA==
   </data>
  </layer>
  <layer id="4" name="BG" width="60" height="14" tintcolor="#cbcbcb">
@@ -171,6 +174,42 @@
   </object>
   <object id="173" x="3840" y="0">
    <polygon points="0,0 0,384 64,384 64,0"/>
+  </object>
+  <object id="174" name="coin" x="392" y="136" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="175" name="coin" x="456" y="200" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="176" name="coin" x="520" y="264" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="177" name="coin" x="1024" y="454" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="178" name="coin" x="1088" y="480" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="179" name="coin" x="1152" y="512" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="180" name="coin" x="1856" y="640" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="181" name="coin" x="1920" y="584" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="182" name="coin" x="1984" y="584" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="183" name="coin" x="2048" y="640" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="184" name="coin" x="2632" y="648" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="187" name="coin" x="2696" y="648" width="48" height="48">
+   <ellipse/>
   </object>
  </objectgroup>
 </map>
