@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="14" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#000000" nextlayerid="6" nextobjectid="134">
  <properties>
+  <property name="BGM" value="cave"/>
   <property name="ID" value="1.S"/>
  </properties>
  <tileset firstgid="1" source="caveTiles.tsx"/>
@@ -12,7 +13,7 @@
  </layer>
  <layer id="4" name="BG" width="60" height="14" tintcolor="#5a717f" parallaxx="1.12">
   <data encoding="base64" compression="zlib">
-   eJztlm0OgyAMhhuO4C+Ow9G4FP892rohSW1KKWVxmbHJE5V+vcVg3ABgu4gIsAcEr+kLedlDOGpJ0PpR8Vk1F+yHt1Dqc4qGekpeahy5n3m4jwOK0fqtJ/Vpe8LXpXy61qs3yhvpnDWpvqWXV8NK3uqsq728Gq7Ufhcr9bwC545W6nl4fwMS59faVqzzDnNv1n+eV3uHGlo9ZLf2tsTOxElnj+KZtTdv2zskj/RZY2fjPLNYCPUf6wTtFwW/J9YT9/Awywvzi7eF
+   eJztVUEOxCAIJPuEnnyOT/NT3H3a0lg2lqBF7HY3aUkmrToDjCa6AMByEQJAfhHoG0/QpVFwnhbq/JLr6RmpJv0ClnEMhnwdXWRs2tpT1MB5WlHnl9x1rbcncl7T13OtfEe6oz5HQ8tvqeXtYUY363W2lreHK3t/4ol/CSz3Lggkms8/bewLgeVOW+/xKBEcnrG8VyaNlTvCU85th5bXDXnEM++dRWPljvI6XszgWjyGsldJoq4XlHUP18M7AVl6vgNu6Plzzm+dF7tL
   </data>
  </layer>
  <layer id="1" name="LAYER" width="60" height="14">

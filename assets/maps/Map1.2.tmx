@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="14" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#35abfd" nextlayerid="6" nextobjectid="188">
  <properties>
+  <property name="BGM" value="cave"/>
   <property name="ID" value="1.2"/>
  </properties>
  <tileset firstgid="1" source="caveTiles.tsx"/>
  <tileset firstgid="257" source="plainTiles.tsx"/>
+ <tileset firstgid="593" source="BGtiles.tsx"/>
  <layer id="5" name="FP" width="60" height="14" tintcolor="#d3d3d3">
   <data encoding="base64" compression="zlib">
-   eJzl1sEJACAIhWHboBlcKdp/lQg6RZQXfaaHf4CPVOJCxEr1R5Xsy2TV8nq1IrxIq/U8o60W3rZCO7W9vJzezNpeSVG8UnMU777DUb2n25zNezP/7L39NdBW9PtaW2cDwdZraA==
+   eJzl1sEJACAIhWFrglYLaf9VQugUIV30lR7+AT5SqVeibtQoeo38y2S18r5qRXiRVu95Rls9vLxCO629Ej9otvbeFMV7a47i3Xc4qvd0m7N5NfPPXu2vgbai39fbKk1lRKT4
   </data>
  </layer>
  <layer id="4" name="BG" width="60" height="14" tintcolor="#cbcbcb">

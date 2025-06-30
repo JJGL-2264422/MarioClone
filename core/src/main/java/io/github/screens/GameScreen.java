@@ -3,7 +3,9 @@ package io.github.screens;
 import static helper.Constants.PPM;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -38,7 +40,7 @@ public class GameScreen extends ScreenAdapter {
     private final World world;
     private final Viewport viewport;
     private final Box2DDebugRenderer box2DDebugRenderer;
-    private int nivel, mapa; private int mapLeft, mapRight, mapBottom, mapTop;
+    private int nivel, mapa; private int mapLeft, mapRight, mapBottom, mapTop; private String mapID;
     private float camHalfWidth, camHalfHeight;
     private boolean secreto, end;
     private final OrthogonalTiledMapRenderer renderer;
@@ -48,11 +50,15 @@ public class GameScreen extends ScreenAdapter {
     //Objetos
     private Player player;
     private Sound enter_sfx, hurt_sfx, finish_sfx, secret_sfx, gameOver_sfx, coin_sfx, bigCoin_sfx;
+    private Music bgm;
     private TextureAtlas marioAtlas, enemyAtlas, hatsAtlas, collectAtlas;
     private HUD hud; private int coins;
     public Controller controller;
+    private Preferences prefs;
 
     public GameScreen(OrthographicCamera camera, int nivel,int mapa, boolean secreto, boolean end, int lives, int timer, int coins, int score){
+
+        prefs = Gdx.app.getPreferences("playerData");
 
         marioAtlas = new TextureAtlas("textures/marioSprites.atlas");
         hatsAtlas = new TextureAtlas("textures/hats.atlas");
@@ -96,6 +102,21 @@ public class GameScreen extends ScreenAdapter {
         mapRight = (mapProp.get("width", Integer.class) * mapProp.get("tilewidth", Integer.class));
         mapBottom = 0;
         mapTop = (mapProp.get("height", Integer.class) * mapProp.get("tileheight", Integer.class));
+        mapID = mapProp.get("ID",String.class);
+
+        bgm = Gdx.audio.newMusic(Gdx.files.internal("music/" + mapProp.get("BGM", String.class) + ".mp3" ));
+        bgm.stop();
+        bgm.setLooping(true);
+
+        int prevMap = prefs.getInteger("lastLvl",0);
+        if(mapID.equals("0.0") ) {
+            if (prevMap == 1)
+                player.getBody().setTransform(47, 30, 0);
+            else if (prevMap == 2)
+                player.getBody().setTransform(105, 30, 0);
+            else if (prevMap == 3)
+                player.getBody().setTransform(90, 100, 0);
+        }
 
         this.world.setContactListener(new ContactListener() {
             @Override
@@ -105,97 +126,121 @@ public class GameScreen extends ScreenAdapter {
 
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("RESTART")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("RESTART"))) {
+                    bgm.stop();
                     if(lives <= 1) {
                         reiniciarMapa(GameScreen.this.nivel, 1, false, true,5, 300,hud.getCoins(),hud.getScore()-500);
-                        gameOver_sfx.play();
+                        gameOver_sfx.play(0.5f);
                     }
                     else{
-                        if(mapProp.get("ID", String.class).equals("0.3")) {
+                        if(mapID.equals("0.3")) {
                             reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, false, false, lives, timer,coins,score);
-                            hurt_sfx.play();
+                            hurt_sfx.play(0.5f);
                         }else if(!end){
-                            reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, false, false, lives-1, timer,hud.getCoins(),hud.getScore());
-                            hurt_sfx.play();
+                            reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, false, false, hud.getLives()-1, timer,hud.getCoins(),hud.getScore());
+                            hurt_sfx.play(0.5f);
                         }else{
-                            reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, false, false, lives, timer,hud.getCoins(),hud.getScore());
-                            finish_sfx.play();
+                            reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, false, false, hud.getLives(), timer,hud.getCoins(),hud.getScore());
+                            finish_sfx.play(0.5f);
                         }
                     }
                 }
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("SIGUIENTE")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("SIGUIENTE"))) {
+                    bgm.stop();
                     GameScreen.this.mapa = mapa + 1;
                     GameScreen.this.secreto = false;
                     reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, GameScreen.this.secreto,false,hud.getLives(),hud.getTimer(),hud.getCoins(),hud.getScore());
-                    enter_sfx.play();
+                    enter_sfx.play(0.5f);
                 }
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("SECRETO")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("SECRETO"))) {
+                    bgm.stop();
                     GameScreen.this.secreto = true;
                     reiniciarMapa(GameScreen.this.nivel, GameScreen.this.mapa, GameScreen.this.secreto,false,hud.getLives(),hud.getTimer(),hud.getCoins(),hud.getScore());
-                    secret_sfx.play();
+                    secret_sfx.play(0.5f);
                 }
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("FINAL")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("FINAL"))) {
-                    reiniciarMapa(0, 0, GameScreen.this.secreto,false,hud.getLives(),300,hud.getCoins(),hud.getScore());
-                    finish_sfx.play();
+                    bgm.stop();
+                    if(mapID.equals("0.3")){
+                        prefs.putBoolean("tutorial",true);
+                        prefs.flush();
+                        reiniciarMapa(0, 0, GameScreen.this.secreto,false,hud.getLives(),300,0,0);
+                    }
+                    else {
+                        if (!mapID.equals("0.1")) {
+                            prefs.putInteger("lastLvl", Character.getNumericValue(mapID.charAt(0)));
+                        }else
+                            prefs.putInteger("lastLvl", 0);
+                        prefs.flush();
+                        reiniciarMapa(0, 0, GameScreen.this.secreto, false, hud.getLives(), 300, hud.getCoins(), hud.getScore());
+                        finish_sfx.play(0.5f);
+                    }
                 }
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("MUNDOUNO")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("MUNDOUNO"))) {
+                    bgm.stop();
                     reiniciarMapa(1, 1, GameScreen.this.secreto,false,hud.getLives(),hud.getTimer(),hud.getCoins(),hud.getScore());
-                    enter_sfx.play();
+                    enter_sfx.play(0.5f);
                 }
                 if ((a != null && a.equals("PLAYER") && b != null && b.equals("MUNDODOS")) ||
                     (b != null && b.equals("PLAYER") && a != null && a.equals("MUNDODOS"))) {
+                    bgm.stop();
                     reiniciarMapa(2, 1, GameScreen.this.secreto,false,hud.getLives(),hud.getTimer(),hud.getCoins(),hud.getScore());
-                    enter_sfx.play();
+                    enter_sfx.play(0.5f);
                 }
-                if (a != null && a.equals("PLAYER") && b != null && b.equals("COIN")){
-                    //((Coin) contact.getFixtureB().getUserData()).collected();
+                if ((a != null && a.equals("PLAYER") && b != null && b.equals("MUNDOTRES")) ||
+                    (b != null && b.equals("PLAYER") && a != null && a.equals("MUNDOTRES"))) {
+                    bgm.stop();
+                    reiniciarMapa(3, 1, GameScreen.this.secreto,false,hud.getLives(),hud.getTimer(),hud.getCoins(),hud.getScore());
+                    enter_sfx.play(0.5f);
+                }
+                if (a != null && a.equals("PLAYER") && b instanceof Coin)  {
+                    ((Coin) b).collected();
                     if(hud.getCoins() < 99){
-                        coin_sfx.play();
+                        coin_sfx.play(0.5f);
                         hud.addCoins(1);
                     }else{
-                        finish_sfx.play();
+                        finish_sfx.play(0.5f);
                         hud.setCoins(0);
                         hud.addLife(1);
                     }
                     hud.setScore(10);
-                }else if(b != null && b.equals("PLAYER") && a != null && a.equals("COIN")){
+                } else if (b != null && b.equals("PLAYER") && a instanceof Coin) {
+                    ((Coin) a).collected();
                     if(hud.getCoins() <= 99){
-                        coin_sfx.play();
+                        coin_sfx.play(0.5f);
                         hud.addCoins(1);
                     }else{
-                        finish_sfx.play();
+                        finish_sfx.play(0.5f);
                         hud.setCoins(0);
                         hud.addLife(1);
                     }
                     hud.setScore(10);
-                    //((Coin) contact.getFixtureA().getUserData()).collected();
                 }
 
-                if (a != null && a.equals("PLAYER") && b != null && b.equals("BIGCOIN")){
-                    //((Coin) contact.getFixtureB().getUserData()).collected();
+                if (a != null && a.equals("PLAYER") && b instanceof BigCoin){
+                    ((BigCoin) b).collected();;
                     if(hud.getCoins() < 90){
-                        bigCoin_sfx.play();
+                        bigCoin_sfx.play(0.5f);
                         hud.addCoins(10);
                     }else{
-                        finish_sfx.play();
+                        finish_sfx.play(0.5f);
                         hud.setCoins((hud.getCoins() + 10)-100);
                         hud.addLife(1);
                     }
                     hud.setScore(100);
-                }else if(b != null && b.equals("PLAYER") && a != null && a.equals("BIGCOIN")){
+                }else if(b != null && b.equals("PLAYER") && a instanceof BigCoin){
+                    ((BigCoin) a).collected();
                     if((hud.getCoins() + 10) <= 99){
-                        bigCoin_sfx.play();
+                        bigCoin_sfx.play(0.5f);
                         hud.addCoins(10);
                     }else{
-                        finish_sfx.play();
+                        finish_sfx.play(0.5f);
                         hud.setCoins((hud.getCoins() + 10)-100);
                         hud.addLife(1);
                     }
                     hud.setScore(100);
-                    //((Coin) contact.getFixtureA().getUserData()).collected();
                 }
             }
 
@@ -271,6 +316,7 @@ public class GameScreen extends ScreenAdapter {
         // "delta" es el tiempo desde el ultimo render en segundos.
         viewport.apply();
         update(delta);
+        bgm.play();
 
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -287,7 +333,7 @@ public class GameScreen extends ScreenAdapter {
         batch.end();
 
         //Renderiza las hitbox
-        box2DDebugRenderer.render(world,camera.combined.scl(PPM));
+        //box2DDebugRenderer.render(world,camera.combined.scl(PPM));
         hud.stage.draw();
         controller.draw();
     }
@@ -347,6 +393,7 @@ public class GameScreen extends ScreenAdapter {
     }
 
     private void reiniciarMapa(int nivel,int mapa, boolean secreto, boolean end, int lives, int timer, int coins, int score) {
+        bgm.dispose();
         Gdx.app.postRunnable(() -> {
             ((Main) Gdx.app.getApplicationListener()).setScreen(new GameScreen(camera,nivel,mapa,secreto,end,lives, timer,coins,score));
         });
@@ -355,6 +402,7 @@ public class GameScreen extends ScreenAdapter {
     @Override
     public void dispose() {
         // Destroy screen's assets here.
+        bgm.dispose();
         renderer.dispose();
         world.dispose();
     }

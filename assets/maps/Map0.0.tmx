@@ -1,137 +1,209 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="80" height="25" tilewidth="64" tileheight="64" infinite="0" nextlayerid="8" nextobjectid="58">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="70" height="45" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#4088f7" nextlayerid="10" nextobjectid="108">
  <properties>
+  <property name="BGM" value="levelselect"/>
   <property name="ID" value="0.0"/>
  </properties>
  <tileset firstgid="1" source="lvlsTiles.tsx"/>
- <layer id="5" name="BGC" width="80" height="25">
+ <tileset firstgid="1324" source="skyTiles.tsx"/>
+ <tileset firstgid="1894" source="BGtiles.tsx"/>
+ <layer id="5" name="BGC" width="70" height="45">
   <data encoding="base64" compression="zlib">
-   eJzt2D0SQDAQhuFQxAwnk5s5GceiMaMwYmXj2+Ur3k7jmSU/sQ0hGqvb6hsfoa2u/EbBewyCZ5ef+Floot+tJLPu0S8pGM0V3NFWVuaPfnpJ1he0VYlf7t+u3dkaj7bK+WnuNUpKH5w/jUpnGG1V2+/pvoR+74S2ot8//fZ1DW3l1Y/zRz8Loa3oRz9r0c+fn+Ru8HimQVuh/UrvJ9BWaD9+v5h4/tBpBf4cU9E=
+   eJztlUsOgjAURR92QKKbcDu4CkZOWIPK1F24Eqe6KRNhQIwJnzb084DT5Az4pLk9hdsqF6kUU2TpM6Ti5WHtJw9z9OVo7tUess2eA3Szz34U2f/1GAeH7/bt4Rt36ZnY2VJA786D3gUtaO42zdlicF9IzlBoPmfGsoXqdx9ozgbhWUr3DRG7E13OldDZtOxdX4fEzJbvpNwKTyPHj5GHDefGzZa4GCmvRgZH86xu30mdcwqXPbZhLV5s9th2dGvGC17wghe84AUveMELXjSBl7BebOZqvaRerws3T146bN7RTusELwD64D/CC14AAGBtfAHwOAeo
   </data>
  </layer>
- <layer id="6" name="BG1" width="80" height="25" tintcolor="#565b78">
+ <layer id="9" name="BGC2" width="70" height="45" tintcolor="#2c4c5a">
   <data encoding="base64" compression="zlib">
-   eJztlNENQDAUAF/sw2RMgA2YhW/MxAraD4kQom2KcpfcZ9P28loRAAAAAAAAAID/Uj19gIDJI5FiZRn526tVxg42/o5mTad69SsHT/30/Sdl6uAo72t4Vz+XbtuGR/NpQ225biG0fmdqTN759u8yVf91X+p3ZUYXE9nf3dTho/2umNGPfvSjH/2C6DcDjbX6Kg==
+   eJzt0LEJwDAQBEFlLtb9525gDUqEkTwDlz78jgEAAAAA8K376v3dSV3efpndzK0d6dJ0abo0XZouTZemS9Ol6dJ0abo0XZouAADASg8qD46B
   </data>
  </layer>
- <layer id="3" name="FG1" width="80" height="25">
+ <layer id="6" name="BG1" width="70" height="45" tintcolor="#8188aa">
   <data encoding="base64" compression="zlib">
-   eJzt11kKglAYhuFTaTS5JwuiwRbRNrqqLpr31GTzKlpKL1QE3jQYHYPvhQfRC8+voKIxSimllFKfl0IaGYszOHBRRTZyfGBlotfzUUbF8hz/mm/++/7lkEcBRZTg/XD9Lnro/3DNb1ZDHQ00EaD1pXNH320BB1Zs1wixwRwLLG/7Sc/hglx4qev+ECOMMcEUs5hr3O+Rbx7PZhjznEltix32OOCIk9WJrnUc07Y9g1LqvXhuz7ZnUErFS99fpVSSi/7LKqWedwGpdx1k
+   eJztlk1OwzAQhQcbcRtYs8w1KF1wADgBrciCsoIt14A1jUSOwQIkTgBLdogxxJIJdRLbceyh80lP+WlqZZ6fxwFgqHMkAVZ738eSwrhT8SKgnkko8FhQGJehBfX1EYttXx+ci81sQy7U3GONcIya4/wr4XmJ98ox8kApW3PDg1sJJ084741qU/jba6hPlLJl+NBW3afU784wMdB9U4lCbzMxe/7YqL6G4xbPgkZvMzF7m+8YlPa7KaG032kOdwF28ChQsueaoYnLHA+5doX7xWZy7xeX+F6rQF2NVJvPt0ho7ijk1udbJDR3uec2Vx4tzdP1fkxSfPN/Wup0vR8T9KKYNcLz2vJMtH6RU0ZcidkvcspIalyzQCE7bXzWmC0LtvopZmfMNUaxfoZh6HKd+gUy5FwALAwthf0323P3qP0A3cUv05kHrG9tqPrtS7GwaNnsjaqud9RpgN4gP2+6fFFc4L7+IX+O5rkmxI+2N7Y8+XDj+T9NLr50SeGy3rrW/xCpHtGzjnr7yxS+DMmU1gH8rclVVY8vXeNXCXwZojP2hX1hX9iXf+7LF0hYyxI=
   </data>
  </layer>
- <layer id="1" name="FG2" width="80" height="25">
+ <layer id="3" name="FG1" width="70" height="45">
   <data encoding="base64" compression="zlib">
-   eJztl91KwzAYhj9je+Lh/LkGT7yHXYLaeRUqCHogWN0uQbwMFRRFFLeq4A9ehlegJ8MjEd+5znVZlqRdarMtLzyQrEuXPLRfMiIXFxcXFxcXG/LoET15Rc9idMN8omm/6FmMXkpgVsFcYbOzMzN+lxX0VwUss247AK8evZmcwzxYyDh2G3Vmx5Ja8+cPvgJQYf0uAwO/w/uqgLWM97qAu0vb/AnouFT5e8ZaXhTr4X1l8XeA+VQl4Hpt0PdrLNt9ZeNa+fUneOaSHJG8LnqoA36895RIXDN1/cnW8gXuJNxza424azeoQSKiFPcU+ktD4h0XeT2kdu3kn1ldf7K1qFD5GxQT/pL7haoe6jBp/jKjueeMq791sKFAdraZ9OdPx5+WW+59N+Xvm1G5qgn2nof/9ncMTjT4ICqn8bppyB/mX5avYHBuMb4e08jJn27O4U/Hc4dTbnyK80vPM1UbE3/DxsT5OW2cv97sYS2hJvssP3+L+GwJNKfa7a1Wn+ScpVwrHxP+kj5UNHL0dwWa+GsXxe1PUu8H76R2rMsu6ycU9EOubYu/Yc4rJrhm/dQF/TrXtsXfDxhLi3w=
+   eJztmr1v00AYxt86SctXFr7msLGwMxokxEc7ACkDH0N3QGKkIjRm4HtBDJ0zAxIsCESaxpSv8h90AMFfQJeKCSGeI3ZzOV98d7EdR8k90k+5c84+v4/ee8+OsuEQbYwwVwrUoByUd9zWF+uL9SUzXMZygdwfDvnWlw7wo/ENvnwHeXgySr6MmvL2w/qi70tlhhoMZyafmsuUtx8yXw7BD0aB82VuanJ9wd5Twb7M9uZthX3gBZBAeNzD+Q1pkBn7wvYJzO8Cn4F+JQ1PloNnFMS1EFxfhh/Q77iP839m6QsXfw/ivBdx7BK43D8WV+UdmyvNeLicS5RDfAyIz0ecPuL1U7xPaQ5kMZcwX+o5NIniaxtf38ZZfMzIUw956iFPPWFMT17nc6fDlWQt2/VlZazNEnlHi0QMtK2srAwUrh2GVVfl6d492srKVHZtxQtrbOzEfrpiP+WoXm8GyQ02lD3inADTwvG7Zrc5dLngGDiuGGdad/eCfQr2m93qUOWSni8yiTm0q9TlHPrnJZx1uu0qWC/K37l2gJ3smmA32APKGvd0ABwcIBZRdeCBOwmuIasv277AhyqYd6IeVWOueRKcAqfBGTAL5iTjRB/mwQXF/Yq1YxYH3uNzDXwAH8EqaAM/6KelfvnCCD3ifSniWAmUg9/q74H74AF4CB6Bx5J5RB/ifAljd6m7RpgPS5i3HgO+9/jr8OM9R5wlOo7Xf18kOcLzlPrXnU/gM/gC1sFXktckXV/iYv8DVmNoc7EtFmmhJXz3FrVARjgu4osJ3FqT+fWEOrVJXHu6vrQUsev6Il5L/E42TuYLX2dV9UaHcfFlYDRr9bB8WeT2zSS+XAXXFMTt4eOaLzq+aHkmrLu0fPnrkFvXZEn4P1ESX56B5xpsYts08et6Sr60B/yfENuP3uH8ZsCKoS+6egVfdPwLeSGcb7BP9+SAl+D/U8PwJalMnuvS0qT4cgv3XtPktmPuy2FwBGxNddo3WJ/ieWkYg6h+vqxR911HJT5OFSsD+PIa7S28MrSo0/5N6jr6i9Te6XLTiVKT9GtCO2tfkuzLafDGidKU9JtCO2tf/gHBvEsc
   </data>
  </layer>
- <layer id="2" name="FG3" width="80" height="25">
+ <layer id="2" name="FG3" width="70" height="45">
   <data encoding="base64" compression="zlib">
-   eJzt0DEOQEAURdFn0GgUrEU9+8JeLENpFbaiJaHD7yYG9yS3muJPngQAAAAAABCHIr/Oege+osk0LOneuBXixixNleTvKhP5EHf/wto39m1bJ3VHvXv6N2fWtrXi3hYAALzLCodEE+Y=
+   eJzt2T0KwkAQQOFxs9vYCOpZrHMQb6GdCp7COmfQxlLw5whip7ewdYIJFq4BIWY3+D6YKsUODzYpIgIAAEoX85pxIlnofWJBFz+6+NHFr2yy0iZXIzdtk/f5e9ogzSdvEnoXAAAAAABQn70VOdjQW8THOJHEhd4CqN9E7/uUO/9mrU02Lehy1B1Pke+5NM2fafV97Yp3dr/541un6/xT9RwIZWQluyfP2X75P/MsshuIpJ+m15H0N1u3W1W32JvN9Bs0L2bR4PeoqtlQ4m4GAECsHuYNMLk=
   </data>
  </layer>
- <objectgroup id="7" name="objects" visible="0">
-  <object id="4" x="896" y="576">
+ <objectgroup id="7" name="objects">
+  <object id="4" x="896" y="1856">
    <polygon points="0,0 -64,0 -64,64 0,64"/>
   </object>
-  <object id="5" x="1280" y="704">
+  <object id="5" x="1280" y="1984">
    <polygon points="0,0 0,128 128,128 128,0"/>
   </object>
-  <object id="15" x="320" y="384">
+  <object id="15" x="320" y="1664">
    <polygon points="0,0 0,128 128,128 128,0"/>
   </object>
-  <object id="16" x="0" y="576">
+  <object id="16" x="0" y="1856">
    <polygon points="0,0 0,64 192,64 192,0"/>
   </object>
-  <object id="17" x="192" y="512">
+  <object id="17" x="192" y="1792">
    <polygon points="0,0 0,704 640,704 640,0"/>
   </object>
-  <object id="18" x="896" y="1280">
+  <object id="18" x="896" y="2560">
    <polygon points="0,0 0,-512 320,-512 320,0"/>
   </object>
-  <object id="19" x="1216" y="832">
+  <object id="19" x="1216" y="2112">
    <polygon points="0,0 256,0 256,448 0,448"/>
   </object>
-  <object id="20" x="1472" y="768">
+  <object id="20" x="1472" y="2048">
    <polygon points="0,0 0,512 192,512 192,0"/>
   </object>
-  <object id="21" x="896" y="768">
+  <object id="21" x="896" y="2048">
    <polygon points="0,0 -64,0 -64,448 0,512"/>
   </object>
-  <object id="22" x="1664" y="832">
+  <object id="22" x="1664" y="2112">
    <polygon points="0,0 384,0 384,64 0,64"/>
   </object>
-  <object id="23" x="2176" y="832">
+  <object id="23" x="2176" y="2112">
    <polygon points="0,0 0,64 320,64 320,0"/>
   </object>
-  <object id="24" x="2944" y="1472">
+  <object id="24" x="2944" y="2752">
    <polygon points="0,0 0,128 -2048,128 -2048,0"/>
   </object>
-  <object id="26" x="832" y="1408">
+  <object id="26" x="832" y="2688">
    <polygon points="0,0 -512,0 -512,192 0,192"/>
   </object>
-  <object id="27" x="832" y="1408">
+  <object id="27" x="832" y="2688">
    <polygon points="0,0 64,64 64,192 0,192"/>
   </object>
-  <object id="29" x="2944" y="1344">
+  <object id="29" x="2944" y="2624">
    <polygon points="0,0 0,256 768,256 768,0"/>
   </object>
-  <object id="30" x="3968" y="704">
+  <object id="30" x="3968" y="1984">
    <polygon points="0,0 -256,0 -256,896 0,896"/>
   </object>
-  <object id="31" x="2944" y="704">
+  <object id="31" x="2944" y="1984">
    <polygon points="0,0 0,448 576,448 576,0"/>
   </object>
-  <object id="32" x="2944" y="768">
+  <object id="32" x="2944" y="2048">
    <polygon points="0,0 -128,0 -128,384 0,384"/>
   </object>
-  <object id="33" x="2816" y="768">
+  <object id="33" x="2816" y="2048">
    <polygon points="0,0 -320,0 -320,512 0,512"/>
   </object>
-  <object id="34" x="3072" y="576">
+  <object id="34" x="3072" y="1856">
    <polygon points="0,0 0,128 128,128 128,0"/>
   </object>
-  <object id="35" x="3712" y="768">
+  <object id="35" x="3712" y="2048">
    <polygon points="0,0 -64,0 -64,64 0,64"/>
   </object>
-  <object id="36" x="3520" y="960">
+  <object id="36" x="3520" y="2240">
    <polygon points="0,0 64,0 64,64 0,64"/>
   </object>
-  <object id="37" x="3712" y="1152">
+  <object id="37" x="3712" y="2432">
    <polygon points="0,0 -64,0 -64,64 0,64"/>
   </object>
-  <object id="38" x="3968" y="768">
+  <object id="38" x="3968" y="2048">
    <polygon points="0,0 384,0 384,64 0,64"/>
   </object>
-  <object id="39" x="4864" y="704">
-   <polygon points="0,0 -512,0 -512,896 0,896"/>
-  </object>
-  <object id="40" name="player" x="347.273" y="310.909" width="64" height="64"/>
-  <object id="41" x="320" y="1216">
+  <object id="40" name="player" x="355" y="1600" width="64" height="64"/>
+  <object id="41" x="320" y="2496">
    <polygon points="0,0 0,192 64,192 64,0"/>
   </object>
-  <object id="47" x="320" y="1408">
+  <object id="47" x="320" y="2688">
    <polygon points="0,0 -64,64 -320,64 -320,192 0,192"/>
   </object>
-  <object id="48" name="mundouno" x="1282.67" y="694.667" width="64" height="64">
+  <object id="48" name="mundouno" x="1282.67" y="1974.67" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="49" name="mundouno" x="1340.67" y="694.667" width="64" height="64">
+  <object id="49" name="mundouno" x="1340.67" y="1974.67" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="53" name="mundouno" x="1310.67" y="690.667" width="64" height="64">
+  <object id="53" name="mundouno" x="1310.67" y="1970.67" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="54" name="mundodos" x="3075.67" y="566" width="64" height="64">
+  <object id="54" name="mundodos" x="3075.67" y="1846" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="55" name="mundodos" x="3131.67" y="566" width="64" height="64">
+  <object id="55" name="mundodos" x="3131.67" y="1846" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="56" name="mundodos" x="3102.67" y="562" width="64" height="64">
+  <object id="56" name="mundodos" x="3102.67" y="1842" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="57" x="0" y="576">
+  <object id="57" x="0" y="1856">
    <polygon points="0,0 0,-576 -64,-576 -64,0"/>
+  </object>
+  <object id="58" x="4480" y="1984">
+   <polygon points="0,0 -128,0 -128,896 0,896"/>
+  </object>
+  <object id="60" x="4480" y="0">
+   <polygon points="0,0 0,1984 64,1984 64,0"/>
+  </object>
+  <object id="61" x="2602" y="0">
+   <polygon points="0,0 0,256 -170,384 -170,0"/>
+  </object>
+  <object id="71" x="3904" y="1696">
+   <polygon points="0,0 192,0 192,32 0,32"/>
+  </object>
+  <object id="74" x="4224" y="1568">
+   <polygon points="0,0 192,0 192,32 0,32"/>
+  </object>
+  <object id="75" x="4224" y="1824.45">
+   <polygon points="0,0 192,0 192,31.5455 0,31.5455"/>
+  </object>
+  <object id="76" x="3904" y="1375">
+   <polygon points="0,0 192,0 192,33 0,33"/>
+  </object>
+  <object id="78" x="4224" y="1184">
+   <polygon points="0,0 -128,0 -128,32 0,32"/>
+  </object>
+  <object id="80" x="3712" y="981">
+   <polygon points="0,0 0,105.333 192,105.333 192,0"/>
+  </object>
+  <object id="82" x="3712" y="981">
+   <polygon points="0,0 -38,8.66667 -64,41.1667 -64,105.167 0,105.167"/>
+  </object>
+  <object id="84" x="4288" y="911.333">
+   <polygon points="0,0 -64,48.6667 0,48.6667"/>
+  </object>
+  <object id="85" x="4288" y="960">
+   <polygon points="0,0 -64,0 0,64"/>
+  </object>
+  <object id="86" x="4288" y="911.333">
+   <polygon points="0,0 0,112.667 192,112.667 192,0"/>
+  </object>
+  <object id="87" x="3392" y="790">
+   <polygon points="0,0 -38,8.66667 -64,41.1667 -64,105.167 0,105.167"/>
+  </object>
+  <object id="88" x="3584" y="790">
+   <polygon points="0,0 38,8.66667 64,41.1667 64,105.167 0,105.167"/>
+  </object>
+  <object id="89" x="3392" y="790">
+   <polygon points="0,0 0,105.333 192,105.333 192,0"/>
+  </object>
+  <object id="90" x="3264" y="660">
+   <polygon points="0,0 38,8.66667 64,41.1667 64,105.167 0,105.167"/>
+  </object>
+  <object id="91" x="2544" y="660">
+   <polygon points="0,0 0,105.333 720,105.333 720,0"/>
+  </object>
+  <object id="92" x="2432" y="0">
+   <polygon points="0,0 0,640 -64,640 -64,0"/>
+  </object>
+  <object id="93" x="2560" y="512">
+   <polygon points="0,0 -128,0 -128,128 0,128"/>
+  </object>
+  <object id="94" name="mundotres" x="2506" y="512" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="95" name="mundotres" x="2506" y="576" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="106" x="3904" y="1024">
+   <polygon points="0,0 0,64 64,64 64,0"/>
+  </object>
+  <object id="107" x="3968" y="1024">
+   <polygon points="0,0 64,0 0,64"/>
   </object>
  </objectgroup>
 </map>

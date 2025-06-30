@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="14" tilewidth="64" tileheight="64" infinite="0" nextlayerid="7" nextobjectid="110">
  <properties>
+  <property name="BGM" value="plain1"/>
   <property name="ID" value="1.1"/>
  </properties>
  <tileset firstgid="1" source="caveTiles.tsx"/>
  <tileset firstgid="257" source="plainTiles.tsx"/>
+ <tileset firstgid="593" source="BGtiles.tsx"/>
+ <tileset firstgid="603" source="BGtiles.tsx"/>
  <layer id="5" name="FP" width="60" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzjENADAIADCwMI/4t8CLg5HQo38rIwoAAJZ4w+8L9zQgV03H
+   eJztzjENADAIADCGhNnDv4+dSIBkPfq3MqIAAGCJe9r0hf88TTgwWg==
   </data>
  </layer>
  <layer id="4" name="BG" width="60" height="14" tintcolor="#d3d3d3">

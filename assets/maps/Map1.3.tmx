@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="14" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#35abfd" nextlayerid="6" nextobjectid="242">
  <properties>
+  <property name="BGM" value="plain2"/>
   <property name="ID" value="1.3"/>
  </properties>
  <tileset firstgid="1" source="caveTiles.tsx"/>
  <tileset firstgid="257" source="plainTiles.tsx"/>
  <tileset firstgid="593" source="castleTiles.tsx"/>
  <tileset firstgid="1049" source="mapTiles.tsx"/>
+ <tileset firstgid="1219" source="BGtiles.tsx"/>
  <layer id="5" name="FP" width="60" height="14" tintcolor="#e5e5e5">
   <data encoding="base64" compression="zlib">
-   eJzd1cENgCAMBdCSeIcN2E9H0BF0BGdwRb2QEAKtliLVwz8Zkz4/RQcATjDW8OKvHAPAiGRDns3EuyGSVq7XJ94lmm8l5t9vOjV4fRKqX4n07PbL3pq9zXknxV6uFfNq7VfCSXmf3kmtvFK9pl7sv9PDW+MsWUv9SnbL8YaZpc+yVba/8awtdleT1xr8G0icZS3ekvWPXszK8eaMb3tP/vq90A==
+   eJzt1cEJgDAMBdAI3u0GDugIOoKO4DR6cCz1UAjBptp+SigWPh5E6OPH1hGRA2Zr09I3RPv1PJQsyrsx8q0P0prqva3cO7H9zZH9ry+dSG9OpzyxfhH5veW80sy9g1FvjlXzWu0XNcua9+uZhPb6hepVerV7p6RXLqQ11C+y2xwvepY7Y/+vXDV7pTPnrArNsgVvyFm7F3UXPRlLe0+tO8Ec
   </data>
  </layer>
  <layer id="4" name="BG" width="60" height="14" tintcolor="#b4b4b4">

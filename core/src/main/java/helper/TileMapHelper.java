@@ -89,14 +89,22 @@ public class TileMapHelper {
                 CircleShape shape = new CircleShape();
                 shape.setRadius(avgRadius);
 
+                body.setUserData(name.toUpperCase());
+
                 body.createFixture(shape, 1f).setSensor(true);
-                if(name.equals("coin"))
-                    coins.add(new Coin(body,gameScreen));
-                if(name.equals("bigcoin"))
-                    bigCoins.add(new BigCoin(body,gameScreen));
+                if(name.equals("coin")) {
+                    Coin coin = new Coin(body, gameScreen);
+                    body.setUserData(coin);
+                    coins.add(coin);
+                }
+
+                if(name.equals("bigcoin")) {
+                    BigCoin bigCoin = new BigCoin(body, gameScreen);
+                    body.setUserData(bigCoin);
+                    bigCoins.add(bigCoin);
+                }
                 shape.dispose();
 
-                body.setUserData(name.toUpperCase());
 
             }
         }
